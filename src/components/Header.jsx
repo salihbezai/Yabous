@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="">
+    <header className="z-50">
       <div className="bg-color-bg-1 text-white">
         <div className="flex  justify-center items-center  relative px-1 py-3 store-container ">
           <div className="flex-1 text-center mr-2">
@@ -54,8 +54,10 @@ const Header = () => {
           </div>
           <nav className=" ml-2">
             <ul className="flex gap-3">
-              <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                <Link to="/">Home</Link>
+              <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl ">
+                <Link to="/" className="underline">
+                  Home
+                </Link>
               </li>
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
                 <Link to="/">Contact</Link>
