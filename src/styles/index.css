@@ -81,6 +81,10 @@
   .secondaryColorText {
     @apply text-[#DB4444];
   }
+
+  .greyColorText {
+    @apply text-[#7F7F7F];
+  }
   .secondaryColorBg {
     @apply bg-[#DB4444];
   }
