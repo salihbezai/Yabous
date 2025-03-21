@@ -76,7 +76,7 @@ const SwiperHero = () => {
               data-swiper-parallax="-300"
             >
               {slide.logo && (
-                <img src={slide.logo} alt="Brand Logo" className="w-10 h-10" />
+                <img src={slide.logo} alt="Brand Logo" className="w-10 h-10 " />
               )}
               <h1 className="ml-1 font-bold text-2xl">{slide.title}</h1>
             </div>

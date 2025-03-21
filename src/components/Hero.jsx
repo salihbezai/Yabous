@@ -1,11 +1,11 @@
 import React from "react";
-import Sidebar from "./Sidebar";
 import SwiperHero from "./SwiperHero";
+import SidebarContainer from "./SidebarContainer";
 
 const Hero = () => {
   return (
-    <div className="store-container flex items-center gap-3 flex-col-reverse sm:flex-col md:flex-row">
-      <Sidebar />
+    <div className="store-container flex items-start gap-3  md:flex-row sm:items-start">
+      <SidebarContainer />
       <SwiperHero />
     </div>
   );

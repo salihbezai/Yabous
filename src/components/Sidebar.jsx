@@ -9,6 +9,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { ChevronRight } from "@mui/icons-material";
+import MuiDrawer from "./MuiDrawer";
 
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,11 +34,11 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="relative my-1 ">
+      <div className="relative my-1 hidden sm:hidden md:block lg:block">
         {/* Sidebar inside hero */}
         <Box
           className=" 
-         bg-white shadow-md z-10 p-4 rounded-md h-[400px]"
+         bg-white shadow-md z-10 p-4 rounded-md h-[400px] w-[200px]"
         >
           <List>
             {categories.map((category, index) => (

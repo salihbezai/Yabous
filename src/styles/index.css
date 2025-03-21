@@ -78,8 +78,11 @@
     @apply text-white;
   }
 
-  .text-color-3 {
+  .secondaryColorText {
     @apply text-[#DB4444];
+  }
+  .secondaryColorBg {
+    @apply bg-[#DB4444];
   }
 
   .text-color-4 {
