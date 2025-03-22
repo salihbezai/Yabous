@@ -11,28 +11,28 @@ const FlashSales = () => {
         <div className="flex items-center">
           <div className="flex  items-center gap-2">
             <div className="">
-              <span className="text-[10px]">Days</span>
+              <span className="text-[10px] font-bold">Days</span>
               <div className="">
                 <h1 className="text-xl font-bold">03</h1>
               </div>
             </div>
             <div className="text-3xl secondaryColorText rounded">:</div>
             <div>
-              <span className="text-[10px]">Hours</span>
+              <span className="text-[10px] font-bold">Hours</span>
               <div className="">
                 <h1 className="text-xl font-bold">23</h1>
               </div>
             </div>
             <div className="text-3xl secondaryColorText rounded">:</div>
             <div>
-              <span className="text-[10px]">Minutes</span>
+              <span className="text-[10px] font-bold">Minutes</span>
               <div className="">
                 <h1 className="text-xl font-bold">19</h1>
               </div>
             </div>
             <div className="text-3xl secondaryColorText rounded">:</div>
             <div>
-              <span className="text-[10px]">Seconds</span>
+              <span className="text-[10px] font-bold">Seconds</span>
               <div className="">
                 <h1 className="text-xl font-bold">56</h1>
               </div>
