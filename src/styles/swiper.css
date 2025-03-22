@@ -85,3 +85,7 @@ body {
   max-width: 400px;
   line-height: 1.3;
 }
+
+.swiper-pagination-bullet-active {
+  background: #db4444;
+}

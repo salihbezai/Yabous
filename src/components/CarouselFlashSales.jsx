@@ -72,11 +72,28 @@ const CarouselFlashSales = () => {
     <Swiper
       modules={[Navigation, Pagination]}
       slidesPerView={4}
-      spaceBetween={20}
+      spaceBetween={35}
       navigation
       pagination={{ clickable: true }}
       className="w-full"
-      style={{ backgroundColor: "#fff" }}
+      style={{
+        backgroundColor: "#fff",
+      }}
+      breakpoints={{
+        500: {
+          // When screen width is ≥ 640px
+          slidesPerView: 2,
+        },
+
+        720: {
+          // When screen width is ≥ 640px
+          slidesPerView: 3,
+        },
+        1024: {
+          // When screen width is ≥ 1024px
+          slidesPerView: 4,
+        },
+      }}
     >
       {products.map((product) => (
         <SwiperSlide key={product.id}>
@@ -101,7 +118,11 @@ const CarouselFlashSales = () => {
                   <MdOutlineRemoveRedEye className="icon-style text-black" />
                 </div>
               </div>
-              <button className="bg-color-bg-1 w-full rounded">
+
+              <button
+                className="button-theme shadow-gray-400
+               text-slate-100 bg-color-bg-1 w-full rounded py-1.5"
+              >
                 Add To Cart
               </button>
             </div>
