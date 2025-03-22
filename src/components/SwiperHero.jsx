@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Button from "@mui/material/Button";
 
@@ -42,6 +42,20 @@ const slides = [
 ];
 
 const SwiperHero = () => {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 640);
+  const [isMediumScreen, setMediumScreen] = useState(window.innerWidth > 768);
+  const [isLargeScreen, setLargeScreen] = useState(window.innerWidth > 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 640);
+      setMediumScreen(window.innerWidth >= 640 && window.innerWidth < 1024);
+      setLargeScreen(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <Swiper
       style={{
@@ -63,29 +77,41 @@ const SwiperHero = () => {
           key={index}
           style={{
             backgroundImage: `url(${slide.image})`,
-            backgroundSize: "contain",
+            backgroundSize: isSmallScreen
+              ? "90%"
+              : isMediumScreen
+              ? "70%"
+              : "contain", // Smaller image on small screens
             backgroundPosition: "100% center",
             backgroundRepeat: "no-repeat",
             height: "100%",
             width: "100%",
           }}
         >
-          <div className="flex flex-col justify-around  h-full">
+          <div className="flex flex-col justify-items-start gap-5 lg:justify-around md:justify-around    h-full">
             <div
-              className="title flex items-center"
+              className="title flex items-center sm:"
               data-swiper-parallax="-300"
             >
               {slide.logo && (
-                <img src={slide.logo} alt="Brand Logo" className="w-10 h-10 " />
+                <img
+                  src={slide.logo}
+                  alt="Brand Logo"
+                  className="w-7 h-7 md:w-10 md:h-10 lg:w-10 lg:h-10"
+                />
               )}
-              <h1 className="ml-1 font-bold text-2xl">{slide.title}</h1>
+              <h1 className="ml-1 font-bold text-base sm:text-base md:text-2xl lg:text-2xl ">
+                {slide.title}
+              </h1>
             </div>
-            <div className="subtitle w-[20rem]" data-swiper-parallax="-200">
-              <h3 className="text-4xl font-semibold">{slide.subtitle}</h3>
+            <div className="subtitle w-[300px]" data-swiper-parallax="-200">
+              <h3 className="text-xl mb-1 mt-1 md:text-4xl lg:text-4xl font-semibold ">
+                {slide.subtitle}
+              </h3>
             </div>
 
             <div className="flex items-center ">
-              <button className="border-b-2 border-[#FAFAFA] cursor-pointer">
+              <button className="font-bold border-b-2 border-[#FAFAFA] cursor-pointer">
                 Shop Now
               </button>
               <ArrowForward className="icon-style" />

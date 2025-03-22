@@ -45,7 +45,7 @@ const MuiDrawer = () => {
   };
 
   return (
-    <div className="block sm:block md:hidden lg:hidden ">
+    <div className="hidden  md:hidden lg:hidden  ">
       <Button onClick={toggleDrawer(true)}>
         <GiHamburgerMenu className="icon-style text-black" />
       </Button>

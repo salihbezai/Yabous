@@ -6,8 +6,10 @@ const FlashSales = () => {
   return (
     <div className="py-5 mt-30">
       <SectionTitle title={"Today’s"} />
-      <div className="store-container flex items-center gap-3">
-        <h1 className="text-3xl font-bold mr-10">Flash Sales</h1>
+      <div className="store-container flex  gap-3 flex-col items-start sm:flex-col md:flex-row lg:flex-row">
+        <h1 className="text-xl sm:text-xl md:text-3xl lg:text-3xl  font-bold  mr-5 md:mr-10 lg:mr-10">
+          Flash Sales
+        </h1>
         <div className="flex items-center">
           <div className="flex  items-center gap-2">
             <div className="">

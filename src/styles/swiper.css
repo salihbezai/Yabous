@@ -89,3 +89,44 @@ body {
 .swiper-pagination-bullet-active {
   background: #db4444;
 }
+
+/* 370px and less  */
+@media (max-width: 370px) {
+  .swiper-button-prev {
+    top: 30px;
+    right: 100px;
+  }
+  .swiper-button-prev::after {
+    font-size: 1.4rem;
+  }
+
+  .swiper-button-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .swiper-button-next::after {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .swiper-button-prev {
+    top: 30px;
+    right: 100px;
+    width: 40px;
+    height: 40px;
+  }
+  .swiper-button-prev::after {
+    font-size: 1.4rem;
+  }
+
+  .swiper-button-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .swiper-button-next::after {
+    font-size: 1.4rem;
+  }
+}
