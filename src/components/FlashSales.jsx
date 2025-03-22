@@ -41,6 +41,11 @@ const FlashSales = () => {
         </div>
       </div>
       <CarouselFlashSales />
+      <div className="w-full flex justify-center mt-2 mb-2">
+        <button className="button-theme secondaryColorBg shadow-gray-400 text-slate-100 py-1.5">
+          View All Products
+        </button>
+      </div>
     </div>
   );
 };
