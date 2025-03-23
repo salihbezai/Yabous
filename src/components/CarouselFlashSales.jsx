@@ -42,21 +42,21 @@ const CarouselFlashSales = () => {
       img: "/images/chair.png",
     },
     {
-      id: 4,
+      id: 5,
       name: "S-Series Comfort Chair",
       price: "$375",
       discount: "-25%",
       img: "chair.jpg",
     },
     {
-      id: 4,
+      id: 6,
       name: "S-Series Comfort Chair",
       price: "$375",
       discount: "-25%",
       img: "chair.jpg",
     },
     {
-      id: 4,
+      id: 7,
       name: "S-Series Comfort Chair",
       price: "$375",
       discount: "-25%",
@@ -126,7 +126,7 @@ const CarouselFlashSales = () => {
                 Add To Cart
               </button>
             </div>
-            <div className="w-[250px]">
+            <div className="w-[250px] py-3">
               <p className="font-bold text-base text-black sm:text-base md:text-lg lg:text-lg xl:text-xl">
                 {product.name}
               </p>
