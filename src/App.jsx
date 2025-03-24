@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import FlashSales from "./components/FlashSales";
 import Categories from "./components/Categories";
 import BestSelling from "./components/BestSelling";
+import HeroCategories from "./components/HeroCategories";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Categories />
         <hr className="font-light opacity-16" />
         <BestSelling />
+        <HeroCategories />
       </Router>
     </>
   );
