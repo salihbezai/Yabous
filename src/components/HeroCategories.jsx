@@ -2,12 +2,15 @@ import React from "react";
 
 const HeroCategories = () => {
   return (
-    <div className="store-container bg-black flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row px-8 py-8">
+    <div
+      className="store-container bg-black flex gap-8
+     flex-col items-center sm:flex-col md:flex-row lg:flex-row xl:flex-row px-8 py-8"
+    >
       <div className="flex  flex-col gap-14">
         <div>
           <p className="text-color-4">Categories</p>
         </div>
-        <div className="text-2xl text-white sm:text-3xl md:text-3xl lg:text-3xl xl:text-3xl">
+        <div className="text-4xl text-white sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl">
           <h1>Enhance Your Music Experience</h1>
         </div>
         <div className="flex gap-3">
@@ -37,7 +40,7 @@ const HeroCategories = () => {
           </button>
         </div>
       </div>
-      <div>
+      <div className="">
         <img src="/images/heroCategoriesImage.png" alt="" />
       </div>
     </div>
