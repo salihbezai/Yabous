@@ -78,7 +78,10 @@ const BestSelling = () => {
                   </div>
                 </div>
                 <div className="w-[250px] py-3">
-                  <p className="font-bold text-base text-black sm:text-base md:text-lg lg:text-lg xl:text-xl">
+                  <p
+                    className="font-bold text-base
+                   text-black sm:text-sm md:text-base lg:text-base  xl:text-base"
+                  >
                     {product.name}
                   </p>
                   <div className="flex items-center gap-4">

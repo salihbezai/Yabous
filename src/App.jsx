@@ -6,6 +6,7 @@ import Categories from "./components/Categories";
 import BestSelling from "./components/BestSelling";
 import HeroCategories from "./components/HeroCategories";
 import OurProducts from "./components/OurProducts";
+import Featured from "./components/Featured";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <BestSelling />
         <HeroCategories />
         <OurProducts />
+        <Featured />
       </Router>
     </>
   );
