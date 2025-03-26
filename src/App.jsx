@@ -8,6 +8,7 @@ import HeroCategories from "./components/HeroCategories";
 import OurProducts from "./components/OurProducts";
 import Featured from "./components/Featured";
 import Services from "./components/Services";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <OurProducts />
         <Featured />
         <Services />
+        <Footer />
       </Router>
     </>
   );
