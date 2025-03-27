@@ -86,12 +86,13 @@ const OurProducts = () => {
               <div key={product.id} className="relative">
                 <div
                   className="relative flex items-center flex-col justify-center   shadow-md 
-            rounded-md bg-color-bg-3 cursor-pointer  min-w-[200px] max-w-[230px] min-h-[250px] max-h-[280px]"
+            rounded-md bg-color-bg-3 cursor-pointer min-w-[300px] max-w-[310px] min-h-[320px] max-h-[420px] sm:min-w-[300px] sm:max-w-[320px] sm:min-h-[350px] sm:max-h-[420px]
+             md:min-w-[200px] md:max-w-[230px] md:min-h-[250px] md:max-h-[280px]"
                 >
                   <img
                     src={product.img}
                     alt={product.name}
-                    className="w-40 h-40 object-contain hover:scale-120 transition-all  ease-in-out"
+                    className=" w-70 h-70 sm:w-70 sm:h-70  md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain hover:scale-120 transition-all  ease-in-out"
                   />
 
                   {product.isNew ? (

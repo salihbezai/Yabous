@@ -100,12 +100,12 @@ const SwiperHero = () => {
                   className="w-7 h-7 md:w-10 md:h-10 lg:w-10 lg:h-10"
                 />
               )}
-              <h1 className="ml-1 font-bold text-base sm:text-base md:text-2xl lg:text-2xl ">
+              <h1 className="ml-1 font-bold text-xl sm:text-xl md:text-2xl lg:text-2xl ">
                 {slide.title}
               </h1>
             </div>
             <div className="subtitle w-[300px]" data-swiper-parallax="-200">
-              <h3 className="text-xl mb-1 mt-1 md:text-4xl lg:text-4xl font-semibold ">
+              <h3 className="text-2xl sm:text-2xl mb-1 mt-1 md:text-4xl lg:text-4xl font-semibold ">
                 {slide.subtitle}
               </h3>
             </div>

@@ -66,7 +66,7 @@ const Featured = () => {
                   <h1 className="text-white text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold">
                     Speakers
                   </h1>
-                  <p className="text-white w-[250px]">
+                  <p className="text-white w-[250px] md:w-[120px] ">
                     Amazon wireless speakers
                   </p>
                   <button className="w-fit text-white font-bold border-b-2 border-[#FAFAFA] cursor-pointer">
@@ -84,7 +84,9 @@ const Featured = () => {
                   <h1 className="text-white text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl font-bold">
                     Perfume
                   </h1>
-                  <p className="text-white w-[250px]">GUCCI INTENSE OUD EDP</p>
+                  <p className="text-white w-[250px] md:w-[120px] ">
+                    GUCCI INTENSE OUD EDP
+                  </p>
                   <button className="w-fit text-white font-bold border-b-2 border-[#FAFAFA] cursor-pointer">
                     Shop Now
                   </button>

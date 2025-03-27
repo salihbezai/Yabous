@@ -44,12 +44,14 @@ const BestSelling = () => {
             <h1 className="text-xl sm:text-xl md:text-3xl lg:text-3xl  font-bold  mr-5 md:mr-10 lg:mr-10">
               Best Selling Products
             </h1>
-            <button
-              className="button-theme mt-3 sm:mt-3 md:mt-0 lg:mt-0 xl:mt-0 shadow-gray-400
+            <div className="flex items-center justify-center sm:justify-center md:justify-end lg:justify-end xl:justify-end">
+              <button
+                className="w-50 button-theme mt-3 sm:mt-3 md:mt-0 lg:mt-0 xl:mt-0 shadow-gray-400
                text-slate-100 bg-[#DB4444] rounded py-1.5"
-            >
-              View All
-            </button>
+              >
+                View All
+              </button>
+            </div>
           </div>
 
           <div
@@ -60,12 +62,13 @@ const BestSelling = () => {
               <div key={product.id} className="">
                 <div
                   className="relative flex items-center flex-col justify-center   shadow-md 
-            rounded-md bg-color-bg-3 cursor-pointer  min-w-[200px] max-w-[230px] min-h-[250px] max-h-[280px]"
+            rounded-md bg-color-bg-3 cursor-pointer min-w-[300px] max-w-[310px] min-h-[320px] max-h-[420px] sm:min-w-[300px] sm:max-w-[320px] sm:min-h-[350px] sm:max-h-[420px]
+             md:min-w-[200px] md:max-w-[230px] md:min-h-[250px] md:max-h-[280px]"
                 >
                   <img
                     src={product.img}
                     alt={product.name}
-                    className="w-40 h-40 object-contain hover:scale-120 transition-all  ease-in-out"
+                    className=" w-70 h-70 sm:w-70 sm:h-70  md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain hover:scale-120 transition-all  ease-in-out"
                   />
 
                   <div className="absolute top-3  right-0 flex flex-col gap-3">

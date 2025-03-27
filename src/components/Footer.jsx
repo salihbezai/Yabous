@@ -27,7 +27,7 @@ const Footer = () => {
                 className="text-black sm:text-sm md:text-base lg:text-base xl:text-lg
                border-none outline-none bg-[#F5F5F5] px-1 py-1 rounded text-sm mr-4 w-[250px]"
               />
-              <PaperAirplaneIcon className="icon-style text-black absolute right-0 w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
+              <PaperAirplaneIcon className="icon-style text-black absolute right-1 w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
             </div>
           </div>
           <div className="flex-col text-white">
