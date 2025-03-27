@@ -9,23 +9,20 @@ import OurProducts from "./components/OurProducts";
 import Featured from "./components/Featured";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
     <>
       <Router>
         <Header />
-        <hr className="font-light opacity-16" />
-        <Hero />
-        <FlashSales />
-        <hr className="font-light opacity-16" />
-        <Categories />
-        <hr className="font-light opacity-16" />
-        <BestSelling />
-        <HeroCategories />
-        <OurProducts />
-        <Featured />
-        <Services />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/sign-up" element={<Signup />} />
+        </Routes>
         <Footer />
       </Router>
     </>
