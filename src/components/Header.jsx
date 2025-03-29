@@ -1,6 +1,10 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
-import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import {
+  HeartIcon,
+  ShoppingCartIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
 
 import { Link } from "react-router-dom";
 
@@ -87,6 +91,9 @@ const Header = () => {
             </div>
             <div>
               <ShoppingCartIcon className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
+            </div>
+            <div>
+              <UserIcon className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
             </div>
           </div>
         </div>
