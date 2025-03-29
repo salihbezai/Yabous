@@ -66,7 +66,7 @@ const Header = () => {
                 <Link to="/">About</Link>
               </li>
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                <Link to="/">Signup</Link>
+                <Link to="/Sign-up">Signup</Link>
               </li>
             </ul>
           </nav>
