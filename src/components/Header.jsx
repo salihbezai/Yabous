@@ -1,14 +1,31 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
+import { Avatar, Menu, MenuItem, IconButton } from "@mui/material";
+import { useState } from "react";
 
 import {
+  ArrowLeftStartOnRectangleIcon,
   HeartIcon,
+  ShoppingBagIcon,
   ShoppingCartIcon,
+  StarIcon,
   UserIcon,
+  XCircleIcon,
 } from "@heroicons/react/24/outline";
 
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <header className="z-50">
       <div className="bg-color-bg-1 text-white">
@@ -93,7 +110,82 @@ const Header = () => {
               <ShoppingCartIcon className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
             </div>
             <div>
-              <UserIcon className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
+              <UserIcon
+                onClick={handleClick}
+                className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7"
+              />
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
+                sx={{
+                  "& .MuiPaper-root": {
+                    background:
+                      "linear-gradient(to bottom right, #111827, #374151, #6D28D9)", // Custom Gradient
+                    color: "white", // Text color
+                    minWidth: "200px", // Adjust width
+                    borderRadius: "3px", // Rounded corners
+                  },
+                }}
+              >
+                <MenuItem onClick={handleClose} className="group w-full">
+                  <Link
+                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                    to="/"
+                  >
+                    <UserIcon className="icon-style w-7 h-7 text-white" />
+                    <span className=" border-b-blue-300 py-1 px-1 w-full">
+                      Manage My Account
+                    </span>
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} className="group w-full">
+                  <Link
+                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                    to="/"
+                  >
+                    <ShoppingBagIcon className="icon-style w-7 h-7 text-white" />
+                    <span className=" border-b-blue-300 py-1 px-1 w-full">
+                      My order
+                    </span>
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} className="group w-full">
+                  <Link
+                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                    to="/"
+                  >
+                    <XCircleIcon className="icon-style w-7 h-7 text-white" />
+                    <span className=" border-b-blue-300 py-1 px-1 w-full">
+                      My Cancellations
+                    </span>
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} className="group w-full">
+                  <Link
+                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                    to="/"
+                  >
+                    <StarIcon className="icon-style w-7 h-7 text-white" />
+                    <span className=" border-b-blue-300 py-1 px-1 w-full">
+                      My Reviews
+                    </span>
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} className="group w-full">
+                  <Link
+                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                    to="/"
+                  >
+                    <ArrowLeftStartOnRectangleIcon className="icon-style w-7 h-7 text-white" />
+                    <span className=" border-b-blue-300 py-1 px-1 w-full">
+                      Logout
+                    </span>
+                  </Link>
+                </MenuItem>
+              </Menu>
             </div>
           </div>
         </div>
