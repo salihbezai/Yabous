@@ -123,7 +123,7 @@ const Header = () => {
                 sx={{
                   "& .MuiPaper-root": {
                     background:
-                      "linear-gradient(to bottom right, #111827, #374151, #6D28D9)", // Custom Gradient
+                      "linear-gradient(to bottom right, #111827, #374151, #6D28D9)",
                     color: "white", // Text color
                     minWidth: "200px", // Adjust width
                     borderRadius: "3px", // Rounded corners
