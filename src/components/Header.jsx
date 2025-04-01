@@ -100,19 +100,39 @@ const Header = () => {
               className="text-black sm:text-sm md:text-base lg:text-base xl:text-lg
                border-none outline-none bg-[#F5F5F5] px-1 py-1 rounded text-sm mr-4"
             />
-            <MagnifyingGlassIcon className="icon-style text-black absolute right-0 w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
+
+            <MagnifyingGlassIcon className="icon-style text-black absolute right-0 w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
           </div>
           <div className="flex items-center gap-2">
             <div>
-              <HeartIcon className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
+              <Link to="/wishlist" className="relative">
+                <span
+                  className="secondaryColorBg absolute w-5 h-5 rounded-full 
+                flex items-center justify-center text-white right-0 top-[-8px]"
+                >
+                  4
+                </span>
+                <HeartIcon
+                  className="icon-style text-black w-8 h-8  
+                sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8 "
+                />
+              </Link>
             </div>
             <div>
-              <ShoppingCartIcon className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
+              <Link to="/wishlist" className="relative">
+                <span
+                  className="secondaryColorBg absolute w-5 h-5 rounded-full 
+                flex items-center justify-center text-white right-0 top-[-8px]"
+                >
+                  4
+                </span>
+                <ShoppingCartIcon className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
+              </Link>
             </div>
             <div>
               <UserIcon
                 onClick={handleClick}
-                className="icon-style text-black w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7"
+                className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8"
               />
               <Menu
                 anchorEl={anchorEl}

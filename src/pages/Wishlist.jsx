@@ -116,7 +116,7 @@ const Wishlist = () => {
             <p className="flex items-center gap-3">
               <div className="w-4 h-8 secondaryColorBg rounded"></div>
               <div>
-                <h4 className="text-black font-bold">just for you</h4>
+                <h4 className="text-base text-black font-bold">just for you</h4>
               </div>
             </p>
             <button
