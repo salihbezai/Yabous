@@ -20,14 +20,14 @@ const Footer = () => {
                 <Link to="/">Get 10% off your first order</Link>
               </li>
             </ul>
-            <div className="flex items-center relative  px-1 py-1 bg-[#F5F5F5] rounded my-2 w-[250px]">
+            <div className="flex items-center relative  px-1 py-1 bg-black rounded my-2 w-[250px] border-white border-1">
               <input
                 type="text"
                 placeholder="Enter your email"
-                className="text-black sm:text-sm md:text-base lg:text-base xl:text-lg
-               border-none outline-none bg-[#F5F5F5] px-1 py-1 rounded text-sm mr-4 w-[250px]"
+                className="greyColorText sm:text-sm md:text-base lg:text-base xl:text-lg
+               border-none outline-none bg-black px-1 py-1 rounded text-sm mr-4 w-[250px]"
               />
-              <PaperAirplaneIcon className="icon-style text-black absolute right-1 w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
+              <PaperAirplaneIcon className="icon-style text-white absolute right-1 w-6 h-6  sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7" />
             </div>
           </div>
           <div className="flex-col text-white">

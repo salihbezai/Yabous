@@ -62,7 +62,7 @@ const Header = () => {
         </div>
       </div>
       <div
-        className="px-2 py-5 store-container flex items-center justify-between 
+        className="py-5 store-container flex items-center justify-between 
       flex-col sm:flex-col gap-2 md:flex-row"
       >
         <div className="flex items-center justify-between w-full">
@@ -119,7 +119,7 @@ const Header = () => {
               </Link>
             </div>
             <div>
-              <Link to="/wishlist" className="relative">
+              <Link to="/cart" className="relative">
                 <span
                   className="secondaryColorBg absolute w-5 h-5 rounded-full 
                 flex items-center justify-center text-white right-0 top-[-8px]"
