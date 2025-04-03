@@ -84,7 +84,7 @@ const Cart = () => {
             type="text"
             placeholder="Coupon Code"
             className="text-black sm:text-sm md:text-base lg:text-base xl:text-lg
-               border-1 shadow-md outline-none bg-white px-1 py-2 rounded text-sm mr-4 w-full sm:w-full md:w-60  lg:w-60 xl:w-60 "
+               border-1 shadow-md outline-none bg-white px-3 py-2 rounded text-sm mr-4 w-full sm:w-full md:w-60  lg:w-60 xl:w-60 "
           />
           <div className="flex items-center justify-center">
             <button className="button-theme secondaryColorBg text-white py-3  w-60   ">
