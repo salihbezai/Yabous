@@ -15,6 +15,9 @@ import Signup from "./pages/Signup";
 import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Myaccount from "./pages/Myaccount";
+import EditProfile from "./components/EditProfile";
+import PaymentOptions from "./components/PaymentOptions";
 
 function App() {
   return (
@@ -28,6 +31,10 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/myaccount/*" element={<Myaccount />}>
+            <Route path="edit-profile" element={<EditProfile />} />
+            <Route path="payment-options" element={<PaymentOptions />} />
+          </Route>
         </Routes>
         <Footer />
       </Router>

@@ -93,12 +93,12 @@ const Header = () => {
           </nav>
         </div>
         <div className="flex items-center gap-3 w-full sm:w-full md:w-auto">
-          <div className="flex items-center relative px-1 py-1 bg-[#F5F5F5] rounded w-full sm:w-full md:w-auto">
+          <div className="flex items-center relative px-1 py-1 bg-[#F5F5F5] rounded w-full sm:w-full md:w-auto ">
             <input
               type="text"
               placeholder="What are you looking for?"
               className="text-black sm:text-sm md:text-base lg:text-base xl:text-lg
-               border-none outline-none bg-[#F5F5F5] px-1 py-1 rounded text-sm mr-4"
+               border-none outline-none bg-[#F5F5F5] px-1 py-1 rounded text-sm mr-4 "
             />
 
             <MagnifyingGlassIcon className="icon-style text-black absolute right-0 w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
