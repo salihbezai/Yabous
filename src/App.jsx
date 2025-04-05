@@ -18,6 +18,7 @@ import Checkout from "./pages/Checkout";
 import Myaccount from "./pages/Myaccount";
 import EditProfile from "./components/EditProfile";
 import PaymentOptions from "./components/PaymentOptions";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="edit-profile" element={<EditProfile />} />
             <Route path="payment-options" element={<PaymentOptions />} />
           </Route>
+          <Route path="/About" element={<About />} />
         </Routes>
         <Footer />
       </Router>
