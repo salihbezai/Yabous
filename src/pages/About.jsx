@@ -3,9 +3,13 @@ import {
   CurrencyDollarIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
-import { Storefront } from "@mui/icons-material";
+import { Instagram, LinkedIn, Storefront, Twitter } from "@mui/icons-material";
 import React from "react";
-
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 const About = () => {
   return (
     <div className="store-container">
@@ -135,6 +139,123 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <Swiper
+        modules={[Navigation, Pagination]}
+        slidesPerView={1}
+        spaceBetween={50}
+        navigation
+        pagination={{ clickable: true }}
+        className="w-full"
+        style={{
+          backgroundColor: "#fff",
+          paddingTop: "60px",
+        }}
+        breakpoints={{
+          500: {
+            // When screen width is ≥ 640px
+            slidesPerView: 1,
+          },
+
+          720: {
+            // When screen width is ≥ 640px
+            slidesPerView: 3,
+          },
+          1024: {
+            // When screen width is ≥ 1024px
+            slidesPerView: 3,
+          },
+          1140: {
+            // When screen width is ≥ 1024px
+            slidesPerView: 3,
+          },
+        }}
+      >
+        <SwiperSlide
+          className="px-3 py-3  
+              cursor-pointer "
+        >
+          <div className="w-[320px] h-[460px]  flex flex-col">
+            {/* Image Container */}
+            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
+              <img
+                src="/images/tom cruise.png"
+                className="h-[240px] w-auto object-contain"
+                alt="Tom Cruise"
+              />
+            </div>
+
+            {/* Text & Icons */}
+            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
+              <div>
+                <h2 className="text-lg font-semibold">Tom Cruise</h2>
+                <p className="text-gray-600">Founder & Chairman</p>
+              </div>
+              <div className="flex items-center gap-3  text-black">
+                <Twitter />
+                <Instagram />
+                <LinkedIn />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide
+          className="px-3 py-3  
+              cursor-pointer "
+        >
+          <div className="w-[320px] h-[460px]  flex flex-col">
+            {/* Image Container */}
+            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
+              <img
+                src="/images/tom cruise.png"
+                className="h-[240px] w-auto object-contain"
+                alt="Tom Cruise"
+              />
+            </div>
+
+            {/* Text & Icons */}
+            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
+              <div>
+                <h2 className="text-lg font-semibold">Tom Cruise</h2>
+                <p className="text-gray-600">Founder & Chairman</p>
+              </div>
+              <div className="flex items-center gap-3  text-black">
+                <Twitter />
+                <Instagram />
+                <LinkedIn />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide
+          className="px-3 py-3  
+              cursor-pointer "
+        >
+          <div className="w-[320px] h-[460px]  flex flex-col">
+            {/* Image Container */}
+            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
+              <img
+                src="/images/tom cruise.png"
+                className="h-[240px] w-auto object-contain"
+                alt="Tom Cruise"
+              />
+            </div>
+
+            {/* Text & Icons */}
+            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
+              <div>
+                <h2 className="text-lg font-semibold">Tom Cruise</h2>
+                <p className="text-gray-600">Founder & Chairman</p>
+              </div>
+              <div className="flex items-center gap-3  text-black">
+                <Twitter />
+                <Instagram />
+                <LinkedIn />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };
