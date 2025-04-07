@@ -10,32 +10,37 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Services from "../components/Services.jsx";
 const About = () => {
   return (
-    <div className="store-container">
-      <div className="flex items-center gap-3">
+    <div className="store-container space-y-5">
+      <div className="flex items-center gap-3 mt-10">
         <div className="text-gray-600">Home</div>
         <div>/</div>
         <div className="text-gray-600 font-bold">About</div>
       </div>
-      <div className="flex items-center gap-5 flex-col md:flex-row mt-10 py-10">
+      <div className="flex lg:items-center gap-5 flex-col md:flex-col lg:flex-row mt-10 py-10">
         <div>
           <h1 className="text-4xl font-bold mb-10">Our Story</h1>
-          <p className="max-w-xl">
+          <p className="max-w-xl text-lg leading-relaxed">
             Launced in 2015, Exclusive is South Asia’s premier online shopping
             makterplace with an active presense in Bangladesh. Supported by wide
             range of tailored marketing, data and service solutions, Exclusive
             has 10,500 sallers and 300 brands and serves 3 millioons customers
             across the region.
           </p>
-          <p className="max-w-xl mt-8">
+          <p className="max-w-xl mt-8 text-lg leading-relaxed">
             Exclusive has more than 1 Million products to offer, growing at a
             very fast. Exclusive offers a diverse assotment in categories
             ranging from consumer.
           </p>
         </div>
-        <div>
-          <img src="/images/africanfemales.png" alt="" />
+        <div className="w-full lg:w-1/2  ">
+          <img
+            src="/images/africanfemales.png"
+            alt="africans females"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
       <div
@@ -43,7 +48,7 @@ const About = () => {
   md:grid-cols-3 lg:grid-cols-4 w-full gap-8"
       >
         <div
-          className="flex flex-col items-center w-full max-w-[280px] px-3 py-3 rounded 
+          className="flex flex-col items-center w-full max-w-[280px] h-full  px-3 py-3 rounded 
              border border-[#7F7F7F] cursor-pointer hover:bg-[#DB4444] group mx-auto"
         >
           <div className=" flex justify-center items-center bg-[#C1C1C1] w-35 h-35 rounded-full">
@@ -67,7 +72,7 @@ const About = () => {
           </div>
         </div>
         <div
-          className="flex flex-col items-center w-full max-w-[280px] px-3 py-3 rounded 
+          className="flex flex-col items-center w-full max-w-[280px] h-full px-3 py-3 rounded 
              border border-[#7F7F7F] cursor-pointer hover:bg-[#DB4444] group mx-auto"
         >
           <div className=" flex justify-center items-center bg-[#C1C1C1] w-35 h-35 rounded-full">
@@ -91,7 +96,7 @@ const About = () => {
           </div>
         </div>
         <div
-          className="flex flex-col items-center w-full max-w-[280px] px-3 py-3 rounded 
+          className="flex flex-col items-center w-full max-w-[280px] h-full px-3 py-3 rounded 
              border border-[#7F7F7F] cursor-pointer hover:bg-[#DB4444] group mx-auto"
         >
           <div className=" flex justify-center items-center bg-[#C1C1C1] w-35 h-35 rounded-full">
@@ -115,7 +120,7 @@ const About = () => {
           </div>
         </div>
         <div
-          className="flex flex-col items-center w-full max-w-[280px] px-3 py-3 rounded 
+          className="flex flex-col items-center w-full max-w-[280px] h-full px-3 py-3 rounded 
              border border-[#7F7F7F] cursor-pointer hover:bg-[#DB4444] group mx-auto"
         >
           <div className=" flex justify-center items-center bg-[#C1C1C1] w-35 h-35 rounded-full">
@@ -143,7 +148,7 @@ const About = () => {
       <Swiper
         modules={[Navigation, Pagination]}
         slidesPerView={1}
-        spaceBetween={50}
+        spaceBetween={250}
         navigation
         pagination={{ clickable: true }}
         className="w-full"
@@ -207,7 +212,35 @@ const About = () => {
             {/* Image Container */}
             <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
               <img
-                src="/images/tom cruise.png"
+                src="/images/Emma watson.png"
+                className="h-[240px] w-auto object-contain"
+                alt="Tom Cruise"
+              />
+            </div>
+
+            {/* Text & Icons */}
+            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
+              <div>
+                <h2 className="text-lg font-semibold">Tom Cruise</h2>
+                <p className="text-gray-600">Founder & Chairman</p>
+              </div>
+              <div className="flex items-center gap-3  text-black">
+                <Twitter />
+                <Instagram />
+                <LinkedIn />
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide
+          className="px-3 py-3  
+              cursor-pointer "
+        >
+          <div className="w-[320px] h-[460px]  flex flex-col">
+            {/* Image Container */}
+            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
+              <img
+                src="/images/will smith.png"
                 className="h-[240px] w-auto object-contain"
                 alt="Tom Cruise"
               />
@@ -256,6 +289,7 @@ const About = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      <Services />
     </div>
   );
 };

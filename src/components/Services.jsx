@@ -1,6 +1,6 @@
 const Services = () => {
   return (
-    <div className="store-container flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center justify-center gap-20 pb-20">
+    <div className="store-container flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center justify-center gap-20 pb-20 mt-10">
       <div className="flex-col items-center justify-center mt-5 mb-5">
         <div className="w-full flex justify-center items-center mt-5 mb-5">
           <div className="w-[60px] h-[60px] bg-[#C1C1C1] rounded-full flex items-center justify-center ">
