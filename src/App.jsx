@@ -19,6 +19,7 @@ import Myaccount from "./pages/Myaccount";
 import EditProfile from "./components/EditProfile";
 import PaymentOptions from "./components/PaymentOptions";
 import About from "./pages/About";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="payment-options" element={<PaymentOptions />} />
           </Route>
           <Route path="/About" element={<About />} />
+          <Route path="/Not-Found" element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>
