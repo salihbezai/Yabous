@@ -20,6 +20,7 @@ import EditProfile from "./components/EditProfile";
 import PaymentOptions from "./components/PaymentOptions";
 import About from "./pages/About";
 import NotFound from "./components/NotFound";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           </Route>
           <Route path="/About" element={<About />} />
           <Route path="/Not-Found" element={<NotFound />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>
