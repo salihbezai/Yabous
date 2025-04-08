@@ -21,6 +21,7 @@ import PaymentOptions from "./components/PaymentOptions";
 import About from "./pages/About";
 import NotFound from "./components/NotFound";
 import Contact from "./pages/Contact";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
           <Route path="/myaccount/*" element={<Myaccount />}>
             <Route path="edit-profile" element={<EditProfile />} />
             <Route path="payment-options" element={<PaymentOptions />} />
+          </Route>
+          <Route path="/product/*">
+            <Route path=":id" element={<ProductDetails />} />
           </Route>
           <Route path="/About" element={<About />} />
           <Route path="/Not-Found" element={<NotFound />} />
