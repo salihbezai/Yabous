@@ -2,9 +2,18 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import SectionTitle from "./SectionTitle";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import StarRatings from "react-star-ratings";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts } from "../features/products/productActions.js";
 
 const OurProducts = () => {
-  const products = [
+  const dispatch = useDispatch();
+  const { products, loading, error } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+  const productsa = [
     {
       id: 1,
       name: "Breed Dry Dog Food",
@@ -63,10 +72,8 @@ const OurProducts = () => {
     },
   ];
 
-  const changeRating = (newRating) => {
-    console.log(newRating);
-  };
-
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>No Products Found !</p>;
   return (
     <div className="py-5 mt-15">
       <SectionTitle title={"Our Products"} />
@@ -82,7 +89,7 @@ const OurProducts = () => {
             className="py-[100px] place-items-center grid grid-cols-1 sm:grid-cols-2
   md:grid-cols-3 lg:grid-cols-4 w-full gap-8"
           >
-            {products.map((product) => (
+            {products?.slice(0, 8).map((product) => (
               <div key={product.id} className="relative">
                 <div
                   className="relative flex items-center flex-col justify-center   shadow-md 
@@ -90,16 +97,16 @@ const OurProducts = () => {
              md:min-w-[200px] md:max-w-[230px] md:min-h-[250px] md:max-h-[280px]"
                 >
                   <img
-                    src={product.img}
-                    alt={product.name}
+                    src={product.images[0]}
+                    alt={product.title}
                     className=" w-70 h-70 sm:w-70 sm:h-70  md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain hover:scale-120 transition-all  ease-in-out"
                   />
 
-                  {product.isNew ? (
+                  {/* {product.isNew ? (
                     <span className="bg-color-bg-4 text-white px-2 rounded  text-sm absolute top-3 left-1">
                       {"New"}
                     </span>
-                  ) : null}
+                  ) : null} */}
                   <div className="absolute top-3  right-0 flex flex-col gap-3">
                     <div className="bg-white px-1 py-1 rounded-full">
                       <HeartIcon className="icon-style text-black" />
@@ -112,19 +119,18 @@ const OurProducts = () => {
                 <div className="w-[250px] py-3">
                   <p
                     className="font-bold text-base text-black
-                   sm:text-sm md:text-base lg:text-base  xl:text-base"
+                   sm:text-sm md:text-base lg:text-base  xl:text-[14px]"
                   >
-                    {product.name}
+                    {product.title}
                   </p>
                   <div className="flex items-center gap-4">
                     <p className="secondaryColorText font-bold">
-                      {product.price}
+                      {product.price + " $"}
                     </p>
                     <div className="flex items-center gap-3 text-sm">
                       <StarRatings
                         rating={5}
                         starRatedColor="#FFAD33"
-                        changeRating={changeRating}
                         numberOfStars={5}
                         name="rating"
                         starDimension="14px"
