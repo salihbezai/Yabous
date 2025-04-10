@@ -5,6 +5,7 @@ import StarRatings from "react-star-ratings";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../features/products/productActions.js";
+import LoadingSpinner from "./LoadingSpinner";
 
 const OurProducts = () => {
   const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const OurProducts = () => {
     },
   ];
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>No Products Found !</p>;
   return (
     <div className="py-5 mt-15">
@@ -87,7 +88,7 @@ const OurProducts = () => {
 
           <div
             className="py-[100px] place-items-center grid grid-cols-1 sm:grid-cols-2
-  md:grid-cols-3 lg:grid-cols-4 w-full gap-8"
+  md:grid-cols-3 lg:grid-cols-4 w-full gap-10"
           >
             {products?.slice(0, 8).map((product) => (
               <div key={product.id} className="relative">
@@ -99,7 +100,9 @@ const OurProducts = () => {
                   <img
                     src={product.images[0]}
                     alt={product.title}
-                    className=" w-70 h-70 sm:w-70 sm:h-70  md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain hover:scale-120 transition-all  ease-in-out"
+                    className=" w-70 h-70 sm:w-70 sm:h-70 
+                     md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain
+                      hover:scale-110 transition-all  ease-in-out"
                   />
 
                   {/* {product.isNew ? (
@@ -119,7 +122,7 @@ const OurProducts = () => {
                 <div className="w-[250px] py-3">
                   <p
                     className="font-bold text-base text-black
-                   sm:text-sm md:text-base lg:text-base  xl:text-[14px]"
+                   sm:text-sm md:text-[14px]lg:text-[14px]xl:text-[14px]"
                   >
                     {product.title}
                   </p>

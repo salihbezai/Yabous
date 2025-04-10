@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+import { getAllUsers, signUp } from "../features/user/userActions";
 
 const Signup = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      name: name,
+      email: email,
+      password: password,
+      avatar: "https://picsum.photos/800",
+    };
+    dispatch(signUp(userData));
+  };
+
   return (
     <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center py-10 store-container">
       <div className="bg-[#CDE5E9] flex flex-[5]">
@@ -17,10 +36,14 @@ const Signup = () => {
           <h1 className="text-2xl font-bold mb-3">Create an account</h1>
           <p className="text-base mb-3">Enter your details below</p>
         </div>
-        <form className="flex flex-col items-center w-full  ">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center w-full  "
+        >
           <input
             type="text"
             placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
             name=""
             id=""
             className="mt-5 mb-5 bg-white border-b-2 border-b-gray-500 
@@ -29,6 +52,7 @@ const Signup = () => {
           <input
             type="text"
             placeholder="Email or Phone Number"
+            onChange={(e) => setEmail(e.target.value)}
             name=""
             id=""
             className="mt-5 mb-5 bg-white border-b-2 border-b-gray-500 
@@ -37,6 +61,7 @@ const Signup = () => {
           <input
             type="password"
             placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
             name=""
             id=""
             className="mt-5 mb-5 bg-white border-b-2 border-b-gray-500 

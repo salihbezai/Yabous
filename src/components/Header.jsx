@@ -81,10 +81,10 @@ const Header = () => {
                 </Link>
               </li>
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                <Link to="/">Contact</Link>
+                <Link to="/contact">Contact</Link>
               </li>
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                <Link to="/">About</Link>
+                <Link to="/about">About</Link>
               </li>
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
                 <Link to="/Sign-up">Signup</Link>
