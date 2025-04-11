@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { getAllUsers, signUp } from "../features/user/userActions";
+import {
+  getAllUsers,
+  login,
+  signUp,
+  updateUser,
+} from "../features/user/userActions";
+import { getSingleProduct } from "../features/products/productActions";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -20,6 +26,7 @@ const Signup = () => {
       avatar: "https://picsum.photos/800",
     };
     dispatch(signUp(userData));
+    dispatch(getSingleProduct(2));
   };
 
   return (

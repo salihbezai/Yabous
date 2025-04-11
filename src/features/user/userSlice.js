@@ -1,9 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllUsers, getSingleUser, signUp } from "./userActions";
+import {
+  checkEmailAvailability,
+  getAllUsers,
+  getSingleUser,
+  getUserProfile,
+  login,
+  signUp,
+  updateUser,
+} from "./userActions";
 
 const initialState = {
   user: null,
   users: [],
+  isEmailValide: false,
   loading: false,
   error: null,
 };
@@ -24,6 +33,21 @@ const userSlice = createSlice({
         console.log(state.user);
       })
       .addCase(signUp.rejected, (state, action) => {
+        state.loading = false;
+
+        state.error = action.payload || action.error.message;
+      });
+
+    // login
+    builder
+      .addCase(login.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(login.rejected, (state, action) => {
         state.loading = false;
 
         state.error = action.payload || action.error.message;
@@ -54,6 +78,48 @@ const userSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(getSingleUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action.error.message;
+      });
+
+    // update user
+    builder
+      .addCase(updateUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action.error.message;
+      });
+
+    // get user profile
+    builder
+      .addCase(getUserProfile.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getUserProfile.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(getUserProfile.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action.error.message;
+      });
+
+    // email availability
+    builder
+      .addCase(checkEmailAvailability.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(checkEmailAvailability.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(checkEmailAvailability.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || action.error.message;
       });
