@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Drawer,
@@ -10,17 +10,16 @@ import {
 } from "@mui/material";
 import { ChevronRight } from "@mui/icons-material";
 import MuiDrawer from "./MuiDrawer";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../features/category/categoryActions";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Sidebar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [subItems, setSubItems] = useState([]);
 
-  const categories = [
-    { name: "Woman's Fashion", sub: [] },
-    { name: "Men's Fashion", sub: ["Shirts", "Shoes", "Accessories"] },
-    { name: "Electronics", sub: ["Phones", "Laptops", "TVs"] },
-    { name: "Home & Lifestyle", sub: [] },
-  ];
+  const dispatch = useDispatch();
+  const { categories, loading, error } = useSelector((state) => state.category);
 
   const handleOpenMenu = (event, subCategories) => {
     setAnchorEl(event.currentTarget);
@@ -32,13 +31,18 @@ const Sidebar = () => {
     setSubItems([]);
   };
 
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+  if (loading) return <LoadingSpinner />;
+  if (error) return <p>No Categories Found !</p>;
   return (
     <>
-      <div className="relative my-1 hidden sm:hidden md:block lg:block">
+      <div className="relative my-1 hidden sm:hidden md:block lg:block ">
         {/* Sidebar inside hero */}
         <Box
           className=" 
-         bg-white shadow-md z-10 p-4 rounded-md h-[400px] w-[200px]"
+         bg-white shadow-md z-10 p-4 rounded-md h-[400px] w-[200px] overflow-y-auto"
         >
           <List>
             {categories.map((category, index) => (
@@ -46,14 +50,14 @@ const Sidebar = () => {
                 key={index}
                 button
                 className="hover:bg-gray-100 transition-all duration-200"
-                onMouseEnter={(e) =>
-                  category.sub.length > 0
-                    ? handleOpenMenu(e, category.sub)
-                    : null
-                }
+                // onMouseEnter={(e) =>
+                //   // category.sub.length > 0
+                //   //   ? handleOpenMenu(e, category.sub)
+                //   //   : null
+                // }
               >
                 <ListItemText primary={category.name} />
-                {category.sub.length > 0 && <ChevronRight />}
+                {/* {category.sub.length > 0 && <ChevronRight />} */}
               </ListItem>
             ))}
           </List>

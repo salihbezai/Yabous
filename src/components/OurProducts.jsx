@@ -14,64 +14,6 @@ const OurProducts = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-  const productsa = [
-    {
-      id: 1,
-      name: "Breed Dry Dog Food",
-      price: "$100",
-      img: "/images/71RdoeXxtrL 1.png",
-      isNew: false,
-    },
-    {
-      id: 2,
-      name: "GCANON EOS DSLR Camera",
-      price: "$360",
-      img: "/images/eos-250d-03-500x500 1.png",
-      isNew: false,
-    },
-    {
-      id: 3,
-      name: "ideapad-gaming-3i-01-500x500 1",
-      price: "$700",
-      img: "/images/ideapad-gaming-3i-01-500x500 1.png",
-      isNew: false,
-    },
-    {
-      id: 4,
-      name: "Curology Product Set ",
-      price: "$500",
-      img: "/images/curology-j7pKVQrTUsM-unsplash 1.png",
-      isNew: false,
-    },
-    {
-      id: 5,
-      name: "Kids Electric Car",
-      price: "$960",
-      img: "/images/New-Mercedes-Benz-Gtr-Licensed-Ride-on-Car-Kids-Electric-Toy-Car 1.png",
-      isNew: true,
-    },
-    {
-      id: 6,
-      name: "Jr. Zoom Soccer Cleats",
-      price: "$1150",
-      img: "/images/Copa_Sense 1.png",
-      isNew: false,
-    },
-    {
-      id: 7,
-      name: "GP11 Shooter USB Gamepad",
-      price: "$660",
-      img: "/images/GP11_PRD3 1.png",
-      isNew: true,
-    },
-    {
-      id: 8,
-      name: "Quilted Satin Jacket",
-      price: "$660",
-      img: "/images/698717_Z8A1X_3475_001_100_0000_Light-Reversible-quilted-satin-jacket 1.png",
-      isNew: false,
-    },
-  ];
 
   if (loading) return <LoadingSpinner />;
   if (error) return <p>No Products Found !</p>;
