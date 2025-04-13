@@ -94,14 +94,36 @@ export const updateUser = createAsyncThunk(
 
 export const getUserProfile = createAsyncThunk(
   "user/getUserProfile",
-  async (id, userData, access_token) => {
+  async (access_token) => {
     const response = await fetch(`${BASE_URL}/auth/profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${access_token}`,
       },
-      body: JSON.stringify(userData),
+    });
+    console.log("run this ");
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to upadate user !");
+    }
+    const data = await response.json();
+    return data;
+  }
+);
+
+// get user
+
+export const getUser = createAsyncThunk(
+  "user/getUser",
+  async (access_token) => {
+    const response = await fetch(`${BASE_URL}/auth/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access_token}`,
+      },
     });
 
     if (!response.ok) {
@@ -113,7 +135,6 @@ export const getUserProfile = createAsyncThunk(
     return data;
   }
 );
-
 // refresh token
 export const refreshToken = createAsyncThunk(
   "user/refreshToken",

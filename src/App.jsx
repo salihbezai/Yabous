@@ -22,8 +22,19 @@ import About from "./pages/About";
 import NotFound from "./components/NotFound";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getUserProfile } from "./features/user/userActions";
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("access_token");
+    if (accessToken) {
+      dispatch(getUserProfile(accessToken));
+    }
+  }, [dispatch]);
   return (
     <>
       <Router>
@@ -50,6 +61,6 @@ function App() {
       </Router>
     </>
   );
-}
+};
 
 export default App;

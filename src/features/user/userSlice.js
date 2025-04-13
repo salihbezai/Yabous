@@ -12,6 +12,7 @@ import {
 const initialState = {
   user: null,
   users: [],
+  isAuthenticated: false,
   isEmailValide: false,
   loading: false,
   error: null,
@@ -45,12 +46,22 @@ const userSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        localStorage.setItem(
+          "access_token",
+          JSON.stringify(action.payload.access_token)
+        );
+        localStorage.setItem(
+          "refresh_token",
+          JSON.stringify(action.payload.refresh_token)
+        );
+        state.isAuthenticated = true;
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
-
+        state.isAuthenticated = false;
         state.error = action.payload || action.error.message;
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
       });
 
     // getAllUsers
@@ -103,10 +114,19 @@ const userSlice = createSlice({
       })
       .addCase(getUserProfile.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        localStorage.setItem(
+          "access_token",
+          JSON.stringify(action.payload.access_token)
+        );
+        localStorage.setItem(
+          "refresh_token",
+          JSON.stringify(action.payload.refresh_token)
+        );
+        state.isAuthenticated = true;
       })
       .addCase(getUserProfile.rejected, (state, action) => {
         state.loading = false;
+        state.isAuthenticated = false;
         state.error = action.payload || action.error.message;
       });
 
