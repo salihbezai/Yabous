@@ -102,11 +102,10 @@ export const getUserProfile = createAsyncThunk(
         Authorization: `Bearer ${access_token}`,
       },
     });
-    console.log("run this ");
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || "Failed to upadate user !");
+      throw new Error(errorData.message);
     }
     const data = await response.json();
     return data;
@@ -143,17 +142,15 @@ export const refreshToken = createAsyncThunk(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        body: JSON.stringify({ refreshToken }),
       },
+      body: JSON.stringify({ refreshToken }),
     });
     if (!response.ok) {
-      throw new Error("Failed to refresh token");
+      throw new Error(errorData.message);
     }
     const data = await response.json();
-
     localStorage.setItem("access_token", data.access_token);
     localStorage.setItem("refresh_token", data.refresh_token);
-
     return data;
   }
 );
@@ -175,6 +172,7 @@ export const checkEmailAvailability = createAsyncThunk(
     }
 
     const data = await response.json();
+
     return data;
   }
 );

@@ -22,23 +22,29 @@ import About from "./pages/About";
 import NotFound from "./components/NotFound";
 import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getUserProfile } from "./features/user/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getUserProfile, refreshToken } from "./features/user/userActions";
 
 const App = () => {
   const dispatch = useDispatch();
+  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("access_token");
+    const refresh_Token = localStorage.getItem("refresh_token");
+
     if (accessToken) {
       dispatch(getUserProfile(accessToken));
+    } else {
+      dispatch(refreshToken(refresh_Token));
     }
   }, [dispatch]);
+
   return (
     <>
       <Router>
-        <Header />
+        <Header user={user} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />

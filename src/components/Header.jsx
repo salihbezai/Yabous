@@ -14,7 +14,7 @@ import {
 
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ user }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -86,9 +86,11 @@ const Header = () => {
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
                 <Link to="/about">About</Link>
               </li>
-              <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                <Link to="/Sign-up">Signup</Link>
-              </li>
+              {!user && (
+                <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
+                  <Link to="/Sign-up">Signup</Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>
