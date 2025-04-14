@@ -1,4 +1,4 @@
-import { login } from "../features/user/userActions";
+import { login } from "../features/auth/authActions";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ const Login = () => {
       email: email,
       password: password,
     };
+
     dispatch(login(userData));
   };
   return (

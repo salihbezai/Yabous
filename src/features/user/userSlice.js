@@ -3,9 +3,6 @@ import {
   checkEmailAvailability,
   getAllUsers,
   getSingleUser,
-  getUserProfile,
-  refreshToken,
-  login,
   signUp,
   updateUser,
 } from "./userActions";
@@ -14,6 +11,7 @@ const initialState = {
   user: null,
   users: [],
   isAuthenticated: false,
+  token: null,
   isEmailValide: false,
   loading: false,
   error: null,
@@ -38,25 +36,6 @@ const userSlice = createSlice({
         state.loading = false;
 
         state.error = action.payload || action.error.message;
-      });
-
-    // login
-    builder
-      .addCase(login.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.loading = false;
-        localStorage.setItem("access_token", action.payload.access_token);
-        localStorage.setItem("refresh_token", action.payload.refresh_token);
-        state.isAuthenticated = true;
-      })
-      .addCase(login.rejected, (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = false;
-        state.error = action.payload || action.error.message;
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
       });
 
     // getAllUsers
@@ -100,42 +79,6 @@ const userSlice = createSlice({
       .addCase(updateUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || action.error.message;
-      });
-
-    // get user profile
-    builder
-      .addCase(getUserProfile.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getUserProfile.fulfilled, (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.user = action.payload;
-      })
-      .addCase(getUserProfile.rejected, (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = false;
-        state.user = null;
-        state.error = action.error.message;
-      });
-
-    // refresh_token
-    builder
-      .addCase(refreshToken.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(refreshToken.fulfilled, (state, action) => {
-        state.loading = false;
-        state.error = null;
-        state.isAuthenticated = true;
-      })
-      .addCase(refreshToken.rejected, (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = false;
-        state.user = null;
-        state.error = action.error.message;
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
       });
 
     // email availability

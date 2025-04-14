@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import {
-  getAllUsers,
-  login,
-  signUp,
-  updateUser,
-} from "../features/user/userActions";
+import { signUp } from "../features/user/userActions";
 
 const Signup = () => {
   const [name, setName] = useState("");

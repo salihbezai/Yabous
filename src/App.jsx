@@ -24,22 +24,15 @@ import Contact from "./pages/Contact";
 import ProductDetails from "./pages/ProductDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getUserProfile, refreshToken } from "./features/user/userActions";
+import { getUser } from "./features/auth/authActions";
 
 const App = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
+  const { accessToken, user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("access_token");
-    const refresh_Token = localStorage.getItem("refresh_token");
-
-    if (accessToken) {
-      dispatch(getUserProfile(accessToken));
-    } else {
-      dispatch(refreshToken(refresh_Token));
-    }
-  }, [dispatch]);
+    dispatch(getUser(accessToken));
+  }, [dispatch, accessToken]);
 
   return (
     <>
