@@ -17,7 +17,7 @@ export const fetchWithAuth = async (dispatch, getState, url, options = {}) => {
   };
 
   let response = await fetch(url, config);
-
+  console.log("this is the response " + response.status);
   if (response.status === 403 || response.status === 401) {
     const refreshResult = await dispatch(refreshToken(refresh_token)).unwrap();
     if (refreshResult?.access_token) {

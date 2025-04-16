@@ -31,14 +31,12 @@ export const login = createAsyncThunk("user/login", async (userData) => {
     },
     body: JSON.stringify(userData),
   });
-  console.log("somethign happaens ");
 
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message || "Something went wrong !");
   }
   const data = await response.json();
-  console.log("somethign happaens " + data);
   return data;
 });
 
@@ -74,10 +72,10 @@ export const refreshToken = createAsyncThunk(
       body: JSON.stringify({ refreshToken }),
     });
     if (!response.ok) {
+      const errorData = await response.json();
       throw new Error(errorData.message);
     }
     const data = await response.json();
-
     return data;
   }
 );

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getUser, login, refreshToken } from "./authActions";
+import toast from "react-hot-toast";
 
 const initialState = {
   user: null,
   isAuthenticated: false,
   accessToken: null,
-  isEmailValide: false,
   loading: false,
   error: null,
 };
@@ -47,6 +47,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.isAuthenticated = false;
         state.error = action.payload || action.error.message;
+        toast.error("wrong email or password !");
       });
 
     // refresh_token

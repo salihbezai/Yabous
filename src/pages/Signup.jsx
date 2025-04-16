@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../features/user/userActions";
+import { Toaster } from "react-hot-toast";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
+  const { isAuthenticated, user, loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -21,9 +23,15 @@ const Signup = () => {
     };
     dispatch(signUp(userData));
   };
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center py-10 store-container">
+      <Toaster />
       <div className="bg-[#CDE5E9] flex flex-[5]">
         <img
           src="/images/loginimage.png"
@@ -37,7 +45,7 @@ const Signup = () => {
           <p className="text-base mb-3">Enter your details below</p>
         </div>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e) => handleSubmit(e)}
           className="flex flex-col items-center w-full  "
         >
           <input
@@ -72,7 +80,9 @@ const Signup = () => {
             <input
               type="submit"
               value="Create Account"
-              className="button-theme bg-color-bg-2 text-white"
+              className={`button-theme bg-color-bg-2 text-white ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             />
             <button className="button-theme flex items-center gap-3">
               <FcGoogle />

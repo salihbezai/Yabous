@@ -25,6 +25,7 @@ import ProductDetails from "./pages/ProductDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getUser } from "./features/auth/authActions";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,15 @@ const App = () => {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/myaccount/*" element={<Myaccount />}>
+
+          <Route
+            path="/myaccount/*"
+            element={
+              <PrivateRoute>
+                <Myaccount />
+              </PrivateRoute>
+            }
+          >
             <Route path="edit-profile" element={<EditProfile />} />
             <Route path="payment-options" element={<PaymentOptions />} />
           </Route>

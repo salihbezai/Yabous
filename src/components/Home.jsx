@@ -9,6 +9,12 @@ import Services from "../components/Services";
 import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    fetch("https://api.escuelajs.co/api/v1/products")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <div>
       <hr className="font-light opacity-16" />

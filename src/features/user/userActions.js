@@ -1,6 +1,6 @@
 import { BASE_URL } from "../../utils.js";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
+import toast from "react-hot-toast";
 // get all users
 export const getAllUsers = createAsyncThunk("user/getUsers", async () => {
   const response = await fetch(`${BASE_URL}/users/`, {
@@ -14,23 +14,42 @@ export const getAllUsers = createAsyncThunk("user/getUsers", async () => {
 });
 
 // create new user
-export const signUp = createAsyncThunk("user/signup", async (userData) => {
-  const response = await fetch(`${BASE_URL}/users/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+export const signUp = createAsyncThunk(
+  "user/signup",
+  async (userData, thunkAPI) => {
+    const { dispatch, rejectWithValue } = thunkAPI;
+    try {
+      console.log("the userdata email " + userData.email);
+      const emailResultCheck = await dispatch(
+        checkEmailAvailability(userData.email)
+      );
+      if (checkEmailAvailability.fulfilled.match(emailResultCheck)) {
+        const isValideEmail = emailResultCheck.payload.isAvailable;
+        if (!isValideEmail) {
+          toast.error(`Email is already registred !`);
+          return rejectWithValue("Email is already registred !");
+        }
+      }
+    } catch (error) {
+      return rejectWithValue("Something went wrong please try again");
+    }
+    const response = await fetch(`${BASE_URL}/users/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(userData),
-    },
-  });
-  if (!response.ok) {
-    const errorData = await response.json();
-    console.log("is error ? " + errorData.message);
-    throw new Error(errorData.message || "Failed to sign up");
-  }
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to sign up");
+    }
 
-  const data = await response.json();
-  return data;
-});
+    const data = await response.json();
+
+    return data;
+  }
+);
 
 // get single user
 
@@ -78,14 +97,14 @@ export const checkEmailAvailability = createAsyncThunk(
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(email),
+      body: JSON.stringify({ email }),
     });
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.log("check here " + JSON.stringify(errorData));
       throw new Error(errorData.message || "something went wrong !");
     }
-
     const data = await response.json();
 
     return data;

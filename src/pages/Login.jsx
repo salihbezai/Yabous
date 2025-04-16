@@ -1,12 +1,17 @@
+import { checkEmailAvailability } from "../features/user/userActions";
 import { login } from "../features/auth/authActions";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuthenticated, user, loading } = useSelector((state) => state.auth);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const userData = {
@@ -16,8 +21,16 @@ const Login = () => {
 
     dispatch(login(userData));
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
   return (
     <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center py-10 store-container">
+      <Toaster />
+
       <div className="bg-[#CDE5E9] flex flex-[5]">
         <img
           src="/images/loginimage.png"
@@ -32,7 +45,7 @@ const Login = () => {
         </div>
         <form
           className="flex flex-col items-center w-full"
-          onClick={(e) => handleLogin(e)}
+          onSubmit={(e) => handleLogin(e)}
         >
           <input
             type="text"
@@ -56,8 +69,10 @@ const Login = () => {
           <div className="flex  items-center justify-between w-full">
             <input
               type="submit"
-              value="Log In"
-              className="button-theme bg-color-bg-2 text-white"
+              value={loading ? "Logging in..." : "Login"}
+              className={`button-theme bg-color-bg-2 text-white ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             />
             <Link className="secondaryColorText font-bold" to="/">
               Forget Password?

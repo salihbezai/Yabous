@@ -6,6 +6,7 @@ import {
   signUp,
   updateUser,
 } from "./userActions";
+import toast from "react-hot-toast";
 
 const initialState = {
   user: null,
@@ -30,6 +31,7 @@ const userSlice = createSlice({
       .addCase(signUp.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        state.isAuthenticated = true;
         console.log(state.user);
       })
       .addCase(signUp.rejected, (state, action) => {
@@ -88,7 +90,8 @@ const userSlice = createSlice({
       })
       .addCase(checkEmailAvailability.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        state.isEmailValide = action.payload.isAvailable;
+        console.log("is vallide " + action.payload.isAvailable);
       })
       .addCase(checkEmailAvailability.rejected, (state, action) => {
         state.loading = false;

@@ -13,10 +13,12 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = ({ user }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  const { isAuthenticated, loading } = useSelector((state) => state.auth);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -105,111 +107,113 @@ const Header = ({ user }) => {
 
             <MagnifyingGlassIcon className="icon-style text-black absolute right-0 w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
           </div>
-          <div className="flex items-center gap-2">
-            <div>
-              <Link to="/wishlist" className="relative">
-                <span
-                  className="secondaryColorBg absolute w-5 h-5 rounded-full 
-                flex items-center justify-center text-white right-0 top-[-8px]"
-                >
-                  4
-                </span>
-                <HeartIcon
-                  className="icon-style text-black w-8 h-8  
-                sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8 "
+          {user && (
+            <div className="flex items-center gap-2">
+              <div>
+                <Link to="/wishlist" className="relative">
+                  <span
+                    className="secondaryColorBg absolute w-5 h-5 rounded-full 
+                   flex items-center justify-center text-white right-0 top-[-8px]"
+                  >
+                    4
+                  </span>
+                  <HeartIcon
+                    className="icon-style text-black w-8 h-8  
+                   sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8 "
+                  />
+                </Link>
+              </div>
+              <div>
+                <Link to="/cart" className="relative">
+                  <span
+                    className="secondaryColorBg absolute w-5 h-5 rounded-full 
+                   flex items-center justify-center text-white right-0 top-[-8px]"
+                  >
+                    4
+                  </span>
+                  <ShoppingCartIcon className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
+                </Link>
+              </div>
+              <div>
+                <UserIcon
+                  onClick={handleClick}
+                  className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8"
                 />
-              </Link>
-            </div>
-            <div>
-              <Link to="/cart" className="relative">
-                <span
-                  className="secondaryColorBg absolute w-5 h-5 rounded-full 
-                flex items-center justify-center text-white right-0 top-[-8px]"
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                  transformOrigin={{ vertical: "top", horizontal: "right" }}
+                  sx={{
+                    "& .MuiPaper-root": {
+                      background:
+                        "linear-gradient(to bottom right, #111827, #374151, #6D28D9)",
+                      color: "white", // Text color
+                      minWidth: "200px", // Adjust width
+                      borderRadius: "3px", // Rounded corners
+                    },
+                  }}
                 >
-                  4
-                </span>
-                <ShoppingCartIcon className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
-              </Link>
+                  <MenuItem onClick={handleClose} className="group w-full">
+                    <Link
+                      className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                      to="/myaccount"
+                    >
+                      <UserIcon className="icon-style w-7 h-7 text-white" />
+                      <span className=" border-b-blue-300 py-1 px-1 w-full">
+                        Manage My Account
+                      </span>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="group w-full">
+                    <Link
+                      className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                      to="/"
+                    >
+                      <ShoppingBagIcon className="icon-style w-7 h-7 text-white" />
+                      <span className=" border-b-blue-300 py-1 px-1 w-full">
+                        My order
+                      </span>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="group w-full">
+                    <Link
+                      className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                      to="/"
+                    >
+                      <XCircleIcon className="icon-style w-7 h-7 text-white" />
+                      <span className=" border-b-blue-300 py-1 px-1 w-full">
+                        My Cancellations
+                      </span>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="group w-full">
+                    <Link
+                      className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                      to="/"
+                    >
+                      <StarIcon className="icon-style w-7 h-7 text-white" />
+                      <span className=" border-b-blue-300 py-1 px-1 w-full">
+                        My Reviews
+                      </span>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="group w-full">
+                    <Link
+                      className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
+                      to="/"
+                    >
+                      <ArrowLeftStartOnRectangleIcon className="icon-style w-7 h-7 text-white" />
+                      <span className=" border-b-blue-300 py-1 px-1 w-full">
+                        Logout
+                      </span>
+                    </Link>
+                  </MenuItem>
+                </Menu>
+              </div>
             </div>
-            <div>
-              <UserIcon
-                onClick={handleClick}
-                className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8"
-              />
-              <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                transformOrigin={{ vertical: "top", horizontal: "right" }}
-                sx={{
-                  "& .MuiPaper-root": {
-                    background:
-                      "linear-gradient(to bottom right, #111827, #374151, #6D28D9)",
-                    color: "white", // Text color
-                    minWidth: "200px", // Adjust width
-                    borderRadius: "3px", // Rounded corners
-                  },
-                }}
-              >
-                <MenuItem onClick={handleClose} className="group w-full">
-                  <Link
-                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
-                    to="/"
-                  >
-                    <UserIcon className="icon-style w-7 h-7 text-white" />
-                    <span className=" border-b-blue-300 py-1 px-1 w-full">
-                      Manage My Account
-                    </span>
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose} className="group w-full">
-                  <Link
-                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
-                    to="/"
-                  >
-                    <ShoppingBagIcon className="icon-style w-7 h-7 text-white" />
-                    <span className=" border-b-blue-300 py-1 px-1 w-full">
-                      My order
-                    </span>
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose} className="group w-full">
-                  <Link
-                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
-                    to="/"
-                  >
-                    <XCircleIcon className="icon-style w-7 h-7 text-white" />
-                    <span className=" border-b-blue-300 py-1 px-1 w-full">
-                      My Cancellations
-                    </span>
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose} className="group w-full">
-                  <Link
-                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
-                    to="/"
-                  >
-                    <StarIcon className="icon-style w-7 h-7 text-white" />
-                    <span className=" border-b-blue-300 py-1 px-1 w-full">
-                      My Reviews
-                    </span>
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose} className="group w-full">
-                  <Link
-                    className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
-                    to="/"
-                  >
-                    <ArrowLeftStartOnRectangleIcon className="icon-style w-7 h-7 text-white" />
-                    <span className=" border-b-blue-300 py-1 px-1 w-full">
-                      Logout
-                    </span>
-                  </Link>
-                </MenuItem>
-              </Menu>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </header>
