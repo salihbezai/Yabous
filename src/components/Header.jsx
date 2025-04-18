@@ -158,7 +158,7 @@ const Header = ({ user }) => {
                   <MenuItem onClick={handleClose} className="group w-full">
                     <Link
                       className="flex items-center gap-5 group-hover:bg-[#6079A6] w-full"
-                      to="/myaccount"
+                      to="/myaccount/edit-profile"
                     >
                       <UserIcon className="icon-style w-7 h-7 text-white" />
                       <span className=" border-b-blue-300 py-1 px-1 w-full">
