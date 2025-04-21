@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -10,63 +10,20 @@ import { Pagination, Navigation } from "swiper/modules";
 import StarRatings from "react-star-ratings";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
 
 const CarouselFlashSales = () => {
-  const products = [
-    {
-      id: 1,
-      name: "HAVIT HV-G92 Gamepad",
-      price: "$120",
-      discount: "-40%",
-      img: "/images/controller.png",
-    },
-    {
-      id: 2,
-      name: "AK-900 Wired Keyboard",
-      price: "$960",
-      discount: "-35%",
-      img: "/images/keyboard.png",
-    },
-    {
-      id: 3,
-      name: "IPS LCD Gaming Monitor",
-      price: "$370",
-      discount: "-30%",
-      img: "/images/monitor.png",
-    },
-    {
-      id: 4,
-      name: "S-Series Comfort Chair",
-      price: "$375",
-      discount: "-25%",
-      img: "/images/chair.png",
-    },
-    {
-      id: 5,
-      name: "S-Series Comfort Chair",
-      price: "$375",
-      discount: "-25%",
-      img: "chair.jpg",
-    },
-    {
-      id: 6,
-      name: "S-Series Comfort Chair",
-      price: "$375",
-      discount: "-25%",
-      img: "chair.jpg",
-    },
-    {
-      id: 7,
-      name: "S-Series Comfort Chair",
-      price: "$375",
-      discount: "-25%",
-      img: "chair.jpg",
-    },
-  ];
+  const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
-  const changeRating = (newRating) => {
-    console.log(newRating);
-  };
+  const updatedProducts = useMemo(() => {
+    return products.map((product) => ({
+      ...product,
+      ratingCount: Math.floor(Math.random() * 200) + 1,
+      discount: Math.floor(product.price - product.price * 0.2),
+      discountPercent: "20%",
+    }));
+  }, [products]);
 
   return (
     <Swiper
@@ -95,7 +52,7 @@ const CarouselFlashSales = () => {
         },
       }}
     >
-      {products.map((product) => (
+      {updatedProducts.slice(15, 25).map((product) => (
         <SwiperSlide key={product.id}>
           <div>
             <div
@@ -103,20 +60,25 @@ const CarouselFlashSales = () => {
             rounded-md bg-color-bg-3 cursor-pointer "
             >
               <img
-                src={product.img}
-                alt={product.name}
+                src={product.images[0]}
+                alt={product.title}
                 className="w-40 h-40 object-contain hover:scale-120 transition-all  ease-in-out"
               />
               <span className="bg-color-bg-2 text-white px-2 rounded  text-sm absolute top-3 left-1">
-                {product.discount}
+                {product.discountPercent}
               </span>
               <div className="absolute top-3  right-0 flex flex-col gap-3">
-                <div className="bg-white px-1 py-1 rounded-full">
+                {/* <div
+                  className="bg-white px-1 py-1 rounded-full cursor-pointer"
+                  onClick={(e) => {
+                    console.log("hi");
+                  }}
+                >
                   <HeartIcon className="icon-style text-black" />
                 </div>
-                <div className="bg-white px-1 py-1 rounded-full">
+                <div className="bg-white px-1 py-1 rounded-full cursor-pointer ">
                   <MdOutlineRemoveRedEye className="icon-style text-black" />
-                </div>
+                </div> */}
               </div>
 
               <button
@@ -129,27 +91,28 @@ const CarouselFlashSales = () => {
             <div className="w-[250px] py-3">
               <p
                 className="font-bold text-base
-               text-black sm:text-sm md:text-base lg:text-base  xl:text-base"
+               text-black sm:text-sm md:text-base lg:text-base  xl:text-base h-[48px]"
               >
-                {product.name}
+                {product.title}
               </p>
               <div className="flex items-center gap-4">
-                <p className="secondaryColorText font-bold">{product.price}</p>
+                <p className="secondaryColorText font-bold">{product.price}$</p>
                 <p className="greyColorText line-through font-bold">
-                  {product.price}
+                  {product.discount}$
                 </p>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <StarRatings
                   rating={5}
                   starRatedColor="#FFAD33"
-                  changeRating={changeRating}
                   numberOfStars={5}
                   name="rating"
                   starDimension="14px"
                   starSpacing="5px"
                 />
-                <p className="greyColorText font-bold">(88)</p>
+                <p className="greyColorText font-bold">
+                  ({product.ratingCount})
+                </p>
               </div>
             </div>
           </div>

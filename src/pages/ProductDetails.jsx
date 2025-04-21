@@ -1,5 +1,7 @@
+import { getSingleProductById } from "../features/products/productActions";
 import RelatedProducts from "../components/RelatedProducts";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import { South } from "@mui/icons-material";
 
 import {
   FormControl,
@@ -8,16 +10,22 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FaShippingFast } from "react-icons/fa";
 import { GrReturn } from "react-icons/gr";
 import { IoReturnUpBack } from "react-icons/io5";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import StarRatings from "react-star-ratings";
+import LoadingSpinner from "../components/LoadingSpinner";
+import NotFound from "../components/NotFound";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [selectedSize, setSelectedSize] = useState("");
+  const { product, loading } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const colors = [
     { value: "blue", colorCode: "#90caf9" },
     { value: "red", colorCode: "#f28b82" },
@@ -29,11 +37,24 @@ const ProductDetails = () => {
     setSelectedSize(sizes[0]);
   }, []);
 
+  useEffect(() => {
+    dispatch(getSingleProductById(id));
+  }, [dispatch, id]);
+
   const handleSizeChange = (e) => {
     setSelectedSize(e.target.value);
-    console.log("the selected size is " + selectedSize);
   };
 
+  const updatedProduct = useMemo(() => {
+    return {
+      ...product,
+      ratingCount: Math.floor(Math.random() * 200) + 1,
+    };
+  });
+  console.log("the product " + product.category.id);
+
+  if (loading) return <LoadingSpinner />;
+  if (!product) return <NotFound />;
   return (
     <div className="store-container">
       <div className="flex items-center gap-3 mt-10">
@@ -41,44 +62,24 @@ const ProductDetails = () => {
         <div>/</div>
         <div className="text-gray-600">Gaming</div>
         <div>/</div>
-        <div className="text-gray-600 font-bold">Havic HV G-92 Gamepad</div>
+        <div className="text-gray-600 font-bold">
+          {updatedProduct && updatedProduct.title}
+        </div>
       </div>
       <div className="flex gap-5 mt-15 flex-col lg:flex-row py-10 ">
         <div className="flex gap-5 w-full h-full">
           <div className=" flex flex-col gap-4 h-full">
-            <div className="bg-[#F5F5F5] px-7 py-3 ">
-              <img
-                src="/images/controller.png"
-                alt=""
-                className="object-contain w-30 h-30"
-              />
-            </div>
-            <div className="bg-[#F5F5F5] px-7 py-3">
-              <img
-                src="/images/controller.png"
-                alt=""
-                className="object-contain w-30 h-30"
-              />
-            </div>
-            <div className="bg-[#F5F5F5] px-7 py-3">
-              <img
-                src="/images/controller.png"
-                alt=""
-                className="object-contain w-30 h-30"
-              />
-            </div>
-            <div className="bg-[#F5F5F5] px-7 py-3">
-              <img
-                src="/images/controller.png"
-                alt=""
-                className="object-contain w-30 h-30"
-              />
-            </div>
+            {updatedProduct &&
+              updatedProduct.images.map((url) => (
+                <div className="bg-[#F5F5F5] px-7 py-3 ">
+                  <img src={url} alt="" className="object-contain w-30 h-30" />
+                </div>
+              ))}
           </div>
 
           <div className="bg-[#F5F5F5] w-full px-5 py-5 flex items-center justify-center">
             <img
-              src="/images/controller.png"
+              src={updatedProduct.images[0]}
               alt=""
               className="h-[400px] w-[400px]  "
             />
@@ -86,13 +87,13 @@ const ProductDetails = () => {
         </div>
 
         <div className="w-full flex flex-col ">
-          <h1 className="text-3xl">Havic HV G-92 Gamepad</h1>
+          <h1 className="text-3xl">{updatedProduct && updatedProduct.title}</h1>
 
           <div className="mb-8">
             <div className="greyColorText font-bold flex items-center space-x-3 mt-2">
               <div className="flex items-center gap-3 text-sm ">
                 <StarRatings
-                  rating={5}
+                  rating={Math.floor(Math.random() * 5) + 1}
                   starRatedColor="#FFAD33"
                   numberOfStars={5}
                   name="rating"
@@ -100,14 +101,14 @@ const ProductDetails = () => {
                   starSpacing="5px"
                 />
               </div>
-              <span>(150 Reviews) | </span>
+              <span>({updatedProduct.ratingCount} Reviews) | </span>
               <span className="text-[#00FF66]">{"In Stock"}</span>
             </div>
-            <h1 className="mt-4 mb-5 text-xl md:text-2xl">$192.00</h1>
+            <h1 className="mt-4 mb-5 text-xl md:text-2xl">
+              ${updatedProduct.price}
+            </h1>
             <p className="text-sm md:text-base ">
-              PlayStation 5 Controller Skin High quality vinyl with air channel
-              adhesive for easy bubble free install & mess free removal Pressure
-              sensitive.
+              {updatedProduct.description}
             </p>
           </div>
           <hr className="font-light opacity-50" />

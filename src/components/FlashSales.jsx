@@ -24,7 +24,6 @@ const FlashSales = () => {
     const timer = setInterval(() => {
       const newTime = calculateTimeLeft();
       setTimeLeft(newTime);
-      console.log("timeLeft", newTime); // this logs the current value correctly
     }, 1000);
 
     return () => clearInterval(timer);
@@ -84,11 +83,11 @@ const FlashSales = () => {
         </div>
       </div>
       <CarouselFlashSales />
-      <div className="w-full flex justify-center mt-2 mb-2">
+      {/* <div className="w-full flex justify-center mt-2 mb-2">
         <button className="button-theme secondaryColorBg shadow-gray-400 text-slate-100 py-1.5">
           View All Products
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

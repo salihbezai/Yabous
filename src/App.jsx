@@ -26,6 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getUser } from "./features/auth/authActions";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,8 @@ const App = () => {
   return (
     <>
       <Router>
+        <ScrollToTop />
+
         <Header user={user} />
         <Routes>
           <Route path="/" element={<Home />} />

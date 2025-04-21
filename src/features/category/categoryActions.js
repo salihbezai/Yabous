@@ -16,6 +16,7 @@ export const getCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await fetchWithErrorHandling(API_BASE_CATEGORY);
+      console.log("the cateogries " + JSON.stringify(data));
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
