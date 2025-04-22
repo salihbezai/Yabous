@@ -52,7 +52,7 @@ const CarouselFlashSales = () => {
         },
       }}
     >
-      {updatedProducts.slice(15, 25).map((product) => (
+      {updatedProducts?.map((product) => (
         <SwiperSlide key={product.id}>
           <div>
             <div
@@ -96,9 +96,11 @@ const CarouselFlashSales = () => {
                 {product.title}
               </p>
               <div className="flex items-center gap-4">
-                <p className="secondaryColorText font-bold">{product.price}$</p>
+                <p className="secondaryColorText font-bold">
+                  {product.price} $
+                </p>
                 <p className="greyColorText line-through font-bold">
-                  {product.discount}$
+                  {product.discount} $
                 </p>
               </div>
               <div className="flex items-center gap-3 text-sm">

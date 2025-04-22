@@ -51,7 +51,7 @@ const ProductDetails = () => {
       ratingCount: Math.floor(Math.random() * 200) + 1,
     };
   });
-  console.log("the product " + product.category.id);
+  console.log("the product " + product && product);
 
   if (loading) return <LoadingSpinner />;
   if (!product) return <NotFound />;
@@ -60,7 +60,7 @@ const ProductDetails = () => {
       <div className="flex items-center gap-3 mt-10">
         <div className="text-gray-600">Product</div>
         <div>/</div>
-        <div className="text-gray-600">Gaming</div>
+        <div className="text-gray-600">{product && product.category.name}</div>
         <div>/</div>
         <div className="text-gray-600 font-bold">
           {updatedProduct && updatedProduct.title}
@@ -240,7 +240,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <RelatedProducts />
+      <RelatedProducts categoryId={product.category.id} />
     </div>
   );
 };

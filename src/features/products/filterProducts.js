@@ -1,3 +1,4 @@
+import { BASE_URL } from "../..//utils";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // filter products by title
@@ -53,6 +54,7 @@ export const filterProductsByCategory = createAsyncThunk(
     );
     if (!response.ok) {
       const errorData = await response.json();
+      console.log("error " + errorData);
       throw new Error(errorData.messag || "Failed to filter Products !");
     }
     const data = await response.json();
