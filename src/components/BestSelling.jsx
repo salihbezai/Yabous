@@ -67,7 +67,7 @@ const BestSelling = () => {
             className="py-[100px] place-items-center grid grid-cols-1 sm:grid-cols-2
   md:grid-cols-3 lg:grid-cols-4 w-full gap-8"
           >
-            {updatedProducts?.map((product) => (
+            {updatedProducts?.slice(0, 12).map((product) => (
               <Link key={product.id} className="" to={`/product/${product.id}`}>
                 <div
                   className="relative flex items-center flex-col justify-center   shadow-md 

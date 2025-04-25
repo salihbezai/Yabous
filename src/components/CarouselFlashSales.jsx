@@ -52,7 +52,7 @@ const CarouselFlashSales = () => {
         },
       }}
     >
-      {updatedProducts?.map((product) => (
+      {updatedProducts?.slice(0, 10).map((product) => (
         <SwiperSlide key={product.id}>
           <div>
             <div

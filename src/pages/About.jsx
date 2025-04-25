@@ -12,6 +12,29 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Services from "../components/Services.jsx";
 const About = () => {
+  const teamMembers = [
+    {
+      name: "Tom Cruise",
+      role: "Founder & Chairman",
+      image: "/images/tom cruise.png",
+    },
+    {
+      name: "Emma Watson",
+      role: "Managing Director",
+      image: "/images/Emma watson.png",
+    },
+    {
+      name: "Will Smith",
+      role: "Product Manager",
+      image: "/images/will smith.png",
+    },
+    {
+      name: "Achraf Bezai",
+      role: "UX Designer",
+      image: "/images/aurelia-dubois.png",
+    },
+  ];
+
   return (
     <div className="store-container space-y-5">
       <div className="flex items-center gap-3 mt-10">
@@ -176,118 +199,32 @@ const About = () => {
           },
         }}
       >
-        <SwiperSlide
-          className="px-3 py-3  
-              cursor-pointer "
-        >
-          <div className="w-[320px] h-[460px]  flex flex-col">
-            {/* Image Container */}
-            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
-              <img
-                src="/images/tom cruise.png"
-                className="h-[240px] w-auto object-contain"
-                alt="Tom Cruise"
-              />
-            </div>
-
-            {/* Text & Icons */}
-            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
-              <div>
-                <h2 className="text-lg font-semibold">Tom Cruise</h2>
-                <p className="text-gray-600">Founder & Chairman</p>
+        {teamMembers.map((member, index) => (
+          <SwiperSlide key={index} className="px-3 py-3 cursor-pointer">
+            <div className="w-[320px] h-[460px] flex flex-col">
+              <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="h-[240px] w-auto object-contain"
+                />
               </div>
-              <div className="flex items-center gap-3  text-black">
-                <Twitter />
-                <Instagram />
-                <LinkedIn />
+              <div className="flex-1 py-3 px-4 space-y-2 flex flex-col">
+                <div>
+                  <h2 className="text-lg font-semibold text-black">
+                    {member.name}
+                  </h2>
+                  <p className="text-gray-600">{member.role}</p>
+                </div>
+                <div className="flex items-center gap-3 text-black">
+                  <Twitter />
+                  <Instagram />
+                  <LinkedIn />
+                </div>
               </div>
             </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide
-          className="px-3 py-3  
-              cursor-pointer "
-        >
-          <div className="w-[320px] h-[460px]  flex flex-col">
-            {/* Image Container */}
-            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
-              <img
-                src="/images/Emma watson.png"
-                className="h-[240px] w-auto object-contain"
-                alt="Tom Cruise"
-              />
-            </div>
-
-            {/* Text & Icons */}
-            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
-              <div>
-                <h2 className="text-lg font-semibold">Tom Cruise</h2>
-                <p className="text-gray-600">Founder & Chairman</p>
-              </div>
-              <div className="flex items-center gap-3  text-black">
-                <Twitter />
-                <Instagram />
-                <LinkedIn />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide
-          className="px-3 py-3  
-              cursor-pointer "
-        >
-          <div className="w-[320px] h-[460px]  flex flex-col">
-            {/* Image Container */}
-            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
-              <img
-                src="/images/will smith.png"
-                className="h-[240px] w-auto object-contain"
-                alt="Tom Cruise"
-              />
-            </div>
-
-            {/* Text & Icons */}
-            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
-              <div>
-                <h2 className="text-lg font-semibold">Tom Cruise</h2>
-                <p className="text-gray-600">Founder & Chairman</p>
-              </div>
-              <div className="flex items-center gap-3  text-black">
-                <Twitter />
-                <Instagram />
-                <LinkedIn />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide
-          className="px-3 py-3  
-              cursor-pointer "
-        >
-          <div className="w-[320px] h-[460px]  flex flex-col">
-            {/* Image Container */}
-            <div className="bg-[#F5F5F5] h-[280px] flex items-center justify-center">
-              <img
-                src="/images/tom cruise.png"
-                className="h-[240px] w-auto object-contain"
-                alt="Tom Cruise"
-              />
-            </div>
-
-            {/* Text & Icons */}
-            <div className="flex-1 py-3 px-4 space-y-2 flex flex-col ">
-              <div>
-                <h2 className="text-lg font-semibold">Tom Cruise</h2>
-                <p className="text-gray-600">Founder & Chairman</p>
-              </div>
-              <div className="flex items-center gap-3  text-black">
-                <Twitter />
-                <Instagram />
-                <LinkedIn />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
       <Services />
     </div>

@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const HeroCategories = () => {
+  const targetDate = "2025-05-01T00:00:00";
+
+  const calculateTimeLeft = () => {
+    const difference = +new Date(targetDate) - +new Date();
+    if (difference > 0) {
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const newTime = calculateTimeLeft();
+      setTimeLeft(newTime);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatNumber = (num) => String(num).padStart(2, "0");
   return (
     <div
       className="store-container bg-black flex gap-8
@@ -15,19 +42,21 @@ const HeroCategories = () => {
         </div>
         <div className="flex gap-3">
           <div className="flex flex-col items-center justify-center bg-white rounded-full w-15 h-15 px-6 py-6">
-            <span className="font-bold text-base">23</span>
-            <span className="text-[12px]">Hours</span>
-          </div>
-          <div className="flex flex-col items-center justify-center bg-white rounded-full w-15 h-15 px-6 py-6">
-            <span className="font-bold">05</span>
+            <span className="font-bold text-base">
+              {formatNumber(timeLeft.days)}
+            </span>
             <span className="text-[12px]">Days</span>
           </div>
           <div className="flex flex-col items-center justify-center bg-white rounded-full w-15 h-15 px-6 py-6">
-            <span className="font-bold">59</span>
+            <span className="font-bold">{formatNumber(timeLeft.hours)}</span>
+            <span className="text-[12px]">Hours</span>
+          </div>
+          <div className="flex flex-col items-center justify-center bg-white rounded-full w-15 h-15 px-6 py-6">
+            <span className="font-bold">{formatNumber(timeLeft.minutes)}</span>
             <span className="text-[12px]">Minutes</span>
           </div>
           <div className="flex flex-col items-center justify-center bg-white rounded-full w-15 h-15 px-6 py-6">
-            <span className="font-bold">35</span>
+            <span className="font-bold">{formatNumber(timeLeft.seconds)}</span>
             <span className="text-[12px]">Seconds</span>
           </div>
         </div>

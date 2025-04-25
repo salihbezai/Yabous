@@ -12,7 +12,7 @@ import {
   XCircleIcon,
 } from "@heroicons/react/24/outline";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = ({ user }) => {
@@ -78,19 +78,53 @@ const Header = ({ user }) => {
           <nav className=" ml-2">
             <ul className="flex gap-3">
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl ">
-                <Link to="/" className="underline">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "border-b-2 border-red-500 text-red-500 font-semibold"
+                      : "text-black hover:text-red-500"
+                  }
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                <Link to="/contact">Contact</Link>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "border-b-2 border-red-500 text-red-500 font-semibold"
+                      : "text-black hover:text-red-500"
+                  }
+                >
+                  Contact
+                </NavLink>
               </li>
               <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                <Link to="/about">About</Link>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "border-b-2 border-red-500 text-red-500 font-semibold"
+                      : "text-black hover:text-red-500"
+                  }
+                >
+                  About
+                </NavLink>
               </li>
               {!user && (
                 <li className="text-base sm:text-base md:text-lg lg:text-lg xl:text-xl">
-                  <Link to="/Sign-up">Signup</Link>
+                  <NavLink
+                    to="/Sign-up"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "border-b-2 border-red-500 text-red-500 font-semibold"
+                        : "text-black hover:text-red-500"
+                    }
+                  >
+                    Signup
+                  </NavLink>
                 </li>
               )}
             </ul>
