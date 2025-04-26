@@ -2,6 +2,7 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BASE_URL } from "../../utils.js";
+import { setFavorites, setLoading } from "./productSlice.js";
 
 // get All Products
 export const fetchProducts = createAsyncThunk(
@@ -182,3 +183,35 @@ export const getRelatedProductsBySlug = createAsyncThunk(
     return data;
   }
 );
+
+export const addToFavorites = (item) => (dispatch, getState) => {
+  const currentFavorites = getState().products.favorites || [];
+  const alreadyExists = currentFavorites.some((fav) => fav.id === item.id);
+  if (alreadyExists) return;
+
+  const updatedFavorites = [...currentFavorites, item];
+  localStorage.setItem("wishlist", JSON.stringify(updatedFavorites));
+
+  dispatch(setFavorites(updatedFavorites));
+};
+
+export const loadFavorites = () => (dispatch) => {
+  dispatch(setLoading(true));
+
+  const storedFavorites = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  dispatch(setFavorites(storedFavorites));
+  dispatch(setLoading(false));
+};
+
+export const removeFromWishList = (item) => (dispatch, getState) => {
+  const currentFavorites = getState().products.favorites || [];
+  const updatedFavorites = currentFavorites.filter(
+    (product) => product.id !== item.id
+  );
+  // Update the state (e.g., via Redux or your state management)
+  dispatch(setFavorites(updatedFavorites)); // Assuming you have a function to update state
+
+  // Save the updated wishlist back to localStorage
+  localStorage.setItem("wishlist", JSON.stringify(updatedFavorites));
+};

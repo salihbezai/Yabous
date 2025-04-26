@@ -35,6 +35,12 @@ const App = () => {
   useEffect(() => {
     dispatch(getUser(accessToken));
   }, [dispatch, accessToken]);
+  
+  useEffect(() => {
+    if (!localStorage.getItem("wishlist")) {
+      localStorage.setItem("wishlist", JSON.stringify([]));
+    }
+  }, []);
 
   return (
     <>

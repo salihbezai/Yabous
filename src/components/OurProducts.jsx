@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../features/products/productActions.js";
 import LoadingSpinner from "./LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const OurProducts = () => {
   const dispatch = useDispatch();
@@ -39,13 +40,19 @@ const OurProducts = () => {
             rounded-md bg-color-bg-3 cursor-pointer min-w-[300px] max-w-[310px] min-h-[320px] max-h-[420px] sm:min-w-[300px] sm:max-w-[320px] sm:min-h-[350px] sm:max-h-[420px]
              md:min-w-[200px] md:max-w-[230px] md:min-h-[250px] md:max-h-[280px]"
                 >
-                  <img
-                    src={product.images[0]}
-                    alt={product.title}
-                    className=" w-70 h-70 sm:w-70 sm:h-70 
+                  <Link
+                    key={product.id}
+                    className=""
+                    to={`/product/${product.id}`}
+                  >
+                    <img
+                      src={product.images[0]}
+                      alt={product.title}
+                      className=" w-70 h-70 sm:w-70 sm:h-70 
                      md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain
                       hover:scale-110 transition-all  ease-in-out"
-                  />
+                    />
+                  </Link>
 
                   {/* {product.isNew ? (
                     <span className="bg-color-bg-4 text-white px-2 rounded  text-sm absolute top-3 left-1">
@@ -61,30 +68,36 @@ const OurProducts = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-[250px] py-3">
-                  <p
-                    className="font-bold text-base text-black
+                <Link
+                  key={product.id}
+                  className=""
+                  to={`/product/${product.id}`}
+                >
+                  <div className="w-[250px] py-3">
+                    <p
+                      className="font-bold text-base text-black
                    sm:text-sm md:text-[14px]lg:text-[14px]xl:text-[14px]"
-                  >
-                    {product.title}
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <p className="secondaryColorText font-bold">
-                      {product.price + " $"}
+                    >
+                      {product.title}
                     </p>
-                    <div className="flex items-center gap-3 text-sm">
-                      <StarRatings
-                        rating={5}
-                        starRatedColor="#FFAD33"
-                        numberOfStars={5}
-                        name="rating"
-                        starDimension="14px"
-                        starSpacing="5px"
-                      />
-                      <p className="greyColorText font-bold">(88)</p>
+                    <div className="flex items-center gap-4">
+                      <p className="secondaryColorText font-bold">
+                        {product.price + " $"}
+                      </p>
+                      <div className="flex items-center gap-3 text-sm">
+                        <StarRatings
+                          rating={5}
+                          starRatedColor="#FFAD33"
+                          numberOfStars={5}
+                          name="rating"
+                          starDimension="14px"
+                          starSpacing="5px"
+                        />
+                        <p className="greyColorText font-bold">(88)</p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>

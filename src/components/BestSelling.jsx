@@ -3,12 +3,15 @@ import SectionTitle from "./SectionTitle";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import StarRatings from "react-star-ratings";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useMemo } from "react";
-import { getSingleProductById } from "../features/products/productActions";
+import { useEffect, useMemo, useState } from "react";
+import {
+  addToFavorites,
+  getSingleProductById,
+} from "../features/products/productActions";
 import { Link, useNavigate } from "react-router-dom";
 
 const BestSelling = () => {
-  const { products } = useSelector((state) => state.products);
+  const { products, favorites } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   // const products = [
   //   {
@@ -44,6 +47,10 @@ const BestSelling = () => {
     }));
   });
 
+  const addToWishList = (prod) => {
+    dispatch(addToFavorites(prod));
+  };
+
   return (
     <div className="py-5 mt-15">
       <SectionTitle title={"This Month"} />
@@ -68,57 +75,71 @@ const BestSelling = () => {
   md:grid-cols-3 lg:grid-cols-4 w-full gap-8"
           >
             {updatedProducts?.slice(0, 12).map((product) => (
-              <Link key={product.id} className="" to={`/product/${product.id}`}>
+              <div>
                 <div
                   className="relative flex items-center flex-col justify-center   shadow-md 
             rounded-md bg-color-bg-3 cursor-pointer min-w-[300px] max-w-[310px] min-h-[320px] max-h-[420px] sm:min-w-[300px] sm:max-w-[320px] sm:min-h-[350px] sm:max-h-[420px]
              md:min-w-[200px] md:max-w-[230px] md:min-h-[250px] md:max-h-[280px]"
                 >
-                  <img
-                    src={product.images[0]}
-                    alt={product.title}
-                    className=" w-70 h-70 sm:w-70 sm:h-70  md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain hover:scale-120 transition-all  ease-in-out"
-                  />
-
+                  <Link
+                    key={product.id}
+                    className=""
+                    to={`/product/${product.id}`}
+                  >
+                    <img
+                      src={product.images[0]}
+                      alt={product.title}
+                      className=" w-70 h-70 sm:w-70 sm:h-70  md:w-40 md:h-40  lg:w-40 lg:h-40 object-contain hover:scale-120 transition-all  ease-in-out"
+                    />
+                  </Link>
                   <div className="absolute top-3  right-0 flex flex-col gap-3">
                     <div className="bg-white px-1 py-1 rounded-full">
-                      <HeartIcon className="icon-style text-black" />
+                      <HeartIcon
+                        className="icon-style text-black"
+                        onClick={() => addToWishList(product)}
+                      />
                     </div>
                     <div className="bg-white px-1 py-1 rounded-full">
                       <MdOutlineRemoveRedEye className="icon-style text-black" />
                     </div>
                   </div>
                 </div>
-                <div className="w-[230px] py-3">
-                  <p
-                    className="font-bold text-base
+                <Link
+                  key={product.id}
+                  className=""
+                  to={`/product/${product.id}`}
+                >
+                  <div className="w-[230px] py-3">
+                    <p
+                      className="font-bold text-base
                    text-black sm:text-sm md:text-base lg:text-base  xl:text-base h-[40px]"
-                  >
-                    {product.title}
-                  </p>
-                  <div className="flex items-center gap-4 mt-3">
-                    <p className="secondaryColorText font-bold">
-                      {product.price}$
+                    >
+                      {product.title}
                     </p>
-                    <p className="greyColorText line-through font-bold">
-                      {product.discount}$
-                    </p>
+                    <div className="flex items-center gap-4 mt-3">
+                      <p className="secondaryColorText font-bold">
+                        {product.price}$
+                      </p>
+                      <p className="greyColorText line-through font-bold">
+                        {product.discount}$
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                      <StarRatings
+                        rating={5}
+                        starRatedColor="#FFAD33"
+                        numberOfStars={5}
+                        name="rating"
+                        starDimension="14px"
+                        starSpacing="5px"
+                      />
+                      <p className="greyColorText font-bold">
+                        ({product.ratingCount})
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3 text-sm">
-                    <StarRatings
-                      rating={5}
-                      starRatedColor="#FFAD33"
-                      numberOfStars={5}
-                      name="rating"
-                      starDimension="14px"
-                      starSpacing="5px"
-                    />
-                    <p className="greyColorText font-bold">
-                      ({product.ratingCount})
-                    </p>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             ))}
           </div>
         </div>

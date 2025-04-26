@@ -15,13 +15,23 @@ const initialState = {
   products: [],
   product: null,
   loading: false,
+  favorites: JSON.parse(localStorage.getItem("wishlist")),
   error: null,
 };
 
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setFavorites: (state, action) => {
+      console.log("setting the favorites " + state.favorites);
+
+      state.favorites = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+  },
 
   extraReducers: (builder) => {
     // fetch products
@@ -153,5 +163,7 @@ const productSlice = createSlice({
       });
   },
 });
+
+export const { setFavorites, setLoading } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -15,6 +15,13 @@ const Home = () => {
       .then((data) => console.log(data));
   }, []);
 
+  useEffect(() => {
+    const wishlistExist = localStorage.getItem("wishlist");
+    if (!wishlistExist) {
+      localStorage.setItem("wishlist", JSON.stringify([]));
+    }
+  }, []);
+
   return (
     <div>
       <hr className="font-light opacity-16" />
