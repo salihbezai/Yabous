@@ -20,6 +20,7 @@ const Header = ({ user }) => {
   const open = Boolean(anchorEl);
   const { isAuthenticated, loading } = useSelector((state) => state.auth);
   const { favorites } = useSelector((state) => state.products);
+  const { cartItems } = useSelector((state) => state.cart);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -164,7 +165,7 @@ const Header = ({ user }) => {
                     className="secondaryColorBg absolute w-5 h-5 rounded-full 
                    flex items-center justify-center text-white right-0 top-[-8px]"
                   >
-                    4
+                    {cartItems ? cartItems.length : 0}
                   </span>
                   <ShoppingCartIcon className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
                 </Link>

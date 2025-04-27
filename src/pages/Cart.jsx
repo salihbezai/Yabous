@@ -1,44 +1,16 @@
 import { Link } from "react-router-dom";
 import CartQuantityInput from "../components/CartQuantityInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setGetTotals } from "../features/cart/cartSlice";
 
 const Cart = () => {
-  const cart = [
-    {
-      id: 1,
-      name: "HAVIT HV-G92 Gamepad",
-      quantity: 1,
-      price: 120,
-      discount: "-40%",
-      img: "/images/controller.png",
-    },
-    {
-      id: 2,
-      name: "AK-900 Wired Keyboard",
-      quantity: 1,
-      price: 960,
-      discount: "-35%",
-      img: "/images/keyboard.png",
-    },
-    {
-      id: 3,
-      name: "IPS LCD Gaming Monitor",
-      quantity: 1,
-      price: 300,
-      discount: "-30%",
-      img: "/images/monitor.png",
-    },
-  ];
-  const [cartItems, setCartItems] = useState(cart);
+  const { cartItems, cartTotalAmount } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-  const updateQuantity = (id, newQte) => {
-    setCartItems(
-      cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: newQte } : item
-      )
-    );
-    console.log(cartItems);
-  };
+  useEffect(() => {
+    dispatch(setGetTotals());
+  }, [cartItems, dispatch]);
 
   return (
     <div className="store-container">
@@ -58,15 +30,12 @@ const Cart = () => {
           {cartItems?.map((item, index) => (
             <div className="flex items-center justify-between shadow-md p-4 bg-white rounded-md mt-5">
               <div className="flex items-center gap-3">
-                <img src={item.img} alt="" className="w-10 h-10" />
-                <div>{item.name}</div>
+                <img src={item.images[0]} alt="" className="w-10 h-10" />
+                <div>{item.title}</div>
               </div>
               <div>{item.price}</div>
-              <CartQuantityInput
-                value={item.quantity}
-                onChange={(newQte) => updateQuantity(item.id, newQte)}
-              />
-              <div>{item.price * item.quantity}</div>
+              <CartQuantityInput item={item} />
+              <div>{item.price * item.cartQuantity}</div>
             </div>
           ))}
         </div>
@@ -99,7 +68,7 @@ const Cart = () => {
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <div>subtotal:</div>
-              <div>{1000}$</div>
+              <div>{cartTotalAmount}$</div>
             </div>
             <hr className="font-light opacity-16" />
             <div className="flex items-center justify-between">
@@ -109,7 +78,7 @@ const Cart = () => {
             <hr className="font-light opacity-16" />
             <div className="flex items-center justify-between">
               <div>Total:</div>
-              <div>1000$</div>
+              <div>{cartTotalAmount}$</div>
             </div>
           </div>
           <div className="flex justify-center items-center">

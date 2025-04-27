@@ -11,6 +11,7 @@ import StarRatings from "react-star-ratings";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { setAddItemToCart } from "../features/cart/cartSlice";
 
 const CarouselFlashSales = () => {
   const { products } = useSelector((state) => state.products);
@@ -24,6 +25,10 @@ const CarouselFlashSales = () => {
       discountPercent: "20%",
     }));
   }, [products]);
+
+  const onAddToCart = (product) => {
+    dispatch(setAddItemToCart(product));
+  };
 
   return (
     <Swiper
@@ -84,6 +89,7 @@ const CarouselFlashSales = () => {
               <button
                 className="button-theme shadow-gray-400
                text-slate-100 bg-color-bg-1 w-full rounded py-1.5"
+                onClick={() => onAddToCart(product)}
               >
                 Add To Cart
               </button>
