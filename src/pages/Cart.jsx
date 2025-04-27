@@ -2,16 +2,29 @@ import { Link } from "react-router-dom";
 import CartQuantityInput from "../components/CartQuantityInput";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setGetTotals } from "../features/cart/cartSlice";
+import {
+  setGetTotals,
+  setRemoveItemFromCart,
+} from "../features/cart/cartSlice";
+import { TrashIcon } from "@heroicons/react/24/outline";
+import CartEmpty from "../components/CartEmpty";
 
 const Cart = () => {
   const { cartItems, cartTotalAmount } = useSelector((state) => state.cart);
+  const [cartList, setCartList] = useState(cartItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setGetTotals());
   }, [cartItems, dispatch]);
 
+  useEffect(() => {
+    setCartList(cartItems);
+  }, [cartItems]);
+
+  const removeItemFromCart = (item) => {
+    dispatch(setRemoveItemFromCart(item));
+  };
   return (
     <div className="store-container">
       <div className="flex items-center gap-3">
@@ -20,24 +33,45 @@ const Cart = () => {
         <div>Cart</div>
       </div>
       <div>
-        <div className="flex items-center justify-between shadow-md p-4 bg-white rounded-md mt-10">
-          <div>Product</div>
-          <div>Price</div>
-          <div>Quantity</div>
-          <div>Subtotal</div>
+        <div
+          className="flex items-center justify-between shadow-md p-4
+         bg-white rounded-md mt-10 gap-5"
+        >
+          <div className="w-2/2">Product</div>
+          <div className="w-1/5">Price</div>
+          <div className="w-1/5">Quantity</div>
+          <div className="w-1/5">Subtotal</div>
+          <div className="w-1/9"></div>
         </div>
         <div className="mt-15">
-          {cartItems?.map((item, index) => (
-            <div className="flex items-center justify-between shadow-md p-4 bg-white rounded-md mt-5">
-              <div className="flex items-center gap-3">
-                <img src={item.images[0]} alt="" className="w-10 h-10" />
-                <div>{item.title}</div>
+          {cartList.length > 0 ? (
+            cartList.map((item, index) => (
+              <div
+                className="flex items-center justify-between 
+              shadow-md p-4 bg-white rounded-md mt-5 gap-5"
+              >
+                <div className="flex items-center gap-3 w-2/2">
+                  <img src={item.images[0]} alt="" className="w-10 h-10" />
+                  <div>{item.title}</div>
+                </div>
+                <div className="w-1/5">$ {item.price}</div>
+                <div className="w-1/5">
+                  <CartQuantityInput item={item} />
+                </div>
+                <div className="w-1/5">$ {item.price * item.cartQuantity}</div>
+                <div className="w-1/9 flex flex-col gap-3">
+                  <div className="bg-white px-1 py-1 rounded-full">
+                    <TrashIcon
+                      className="icon-style text-black"
+                      onClick={() => removeItemFromCart(item)}
+                    />
+                  </div>
+                </div>
               </div>
-              <div>{item.price}</div>
-              <CartQuantityInput item={item} />
-              <div>{item.price * item.cartQuantity}</div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <CartEmpty />
+          )}
         </div>
         <div className="mt-3 mb-3 flex items-center justify-center ">
           <Link to="/">
