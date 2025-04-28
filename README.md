@@ -1,12 +1,127 @@
-# React + Vite
+# 🛍️ Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern e-commerce frontend built with **React 19**, **Vite 6**, **TailwindCSS 4**, and **Redux Toolkit**, using data fetched from the [Platzi Fake Store API](https://fakeapi.platzi.com/en/rest/products/).
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡ Built with **Vite** for fast development and optimized production builds
+- 🎨 Styled using **TailwindCSS**
+- 🛒 Global state management with **Redux Toolkit**
+- 🔥 Smooth UX with **React Hot Toast** notifications
+- 🌙 Light/Dark mode with **next-themes**
+- 📧 Email service integration via **EmailJS**
+- ⭐ Product ratings with **React Star Ratings**
+- 📦 Dynamic product data fetched from an external API
+- 🎠 Interactive sliders using **Swiper.js**
+- 🔄 Routing with **React Router DOM v7**
+- 🚀 Fully responsive design
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React 19, Vite 6
+- **Styling:** TailwindCSS 4, Emotion
+- **State Management:** Redux Toolkit
+- **API:** [Platzi Fake Store API](https://fakeapi.platzi.com/en/rest/products/)
+- **UI Components:** MUI Icons, Heroicons, React Icons
+- **Other Libraries:** Swiper, React Countdown, React Hot Toast, EmailJS
+
+## 📸 Screenshots
+
+> _Coming soon: add images of your application here!_
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/store.git
+cd store
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the Development Server
+
+```bash
+npm run dev
+```
+
+The app should now be running at `http://localhost:5173` by default.
+
+## 📂 Project Structure
+
+```
+store/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── redux/
+│   ├── services/
+│   ├── styles/
+│   └── utils/
+├── .eslintrc.json
+├── index.html
+├── package.json
+├── tailwind.config.js
+└── vite.config.js
+```
+
+## ⚙️ Available Scripts
+
+| Script            | Description                      |
+| ----------------- | -------------------------------- |
+| `npm run dev`     | Run the app in development mode  |
+| `npm run build`   | Create a production build        |
+| `npm run preview` | Preview the production build     |
+| `npm run lint`    | Run ESLint to check code quality |
+
+## 📦 API Reference
+
+- [Platzi Fake Store API](https://fakeapi.platzi.com/en/rest/products/)
+
+Example product object:
+
+```json
+{
+  "id": 1,
+  "title": "Product Title",
+  "price": 100,
+  "description": "Product description",
+  "images": ["image1.jpg", "image2.jpg"],
+  "category": {
+    "id": 1,
+    "name": "Clothes",
+    "image": "category-image.jpg"
+  }
+}
+```
+
+## 🧪 Future Improvements
+
+- 🛒 Implement shopping cart functionality
+- 💳 Add payment integration (Stripe, PayPal)
+- 🔒 Authentication (Sign in / Sign up)
+- 📈 Add analytics (Google Analytics)
+- 📝 Unit & Integration tests (Jest + React Testing Library)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to [open an issue](https://github.com/your-username/store/issues) or submit a pull request.
+
+## 📃 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for more details.
+
+## 📬 Contact
+
+- GitHub: [salihbezai](https://github.com/salihbezai)
+- Email: salihbezai98@gmail.com
