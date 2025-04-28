@@ -1,4 +1,4 @@
-# 🛍️ Store
+# 🛍️ Yabous
 
 A modern e-commerce frontend built with **React 19**, **Vite 6**, **TailwindCSS 4**, and **Redux Toolkit**, using data fetched from the [Platzi Fake Store API](https://fakeapi.platzi.com/en/rest/products/).
 
@@ -15,6 +15,9 @@ A modern e-commerce frontend built with **React 19**, **Vite 6**, **TailwindCSS 
 - 🎠 Interactive sliders using **Swiper.js**
 - 🔄 Routing with **React Router DOM v7**
 - 🚀 Fully responsive design
+- 🛒 shopping cart functionality
+- 💳 payment integration (Stripe, PayPal)
+- 🔒 Authentication (Sign in / Sign up)
 
 ## 🛠️ Tech Stack
 
@@ -36,7 +39,7 @@ Follow these steps to run the project locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/store.git
+git clone https://github.com/salihbezai/yabous.git
 cd store
 ```
 
@@ -53,25 +56,6 @@ npm run dev
 ```
 
 The app should now be running at `http://localhost:5173` by default.
-
-## 📂 Project Structure
-
-```
-store/
-├── public/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── redux/
-│   ├── services/
-│   ├── styles/
-│   └── utils/
-├── .eslintrc.json
-├── index.html
-├── package.json
-├── tailwind.config.js
-└── vite.config.js
-```
 
 ## ⚙️ Available Scripts
 
@@ -105,16 +89,13 @@ Example product object:
 
 ## 🧪 Future Improvements
 
-- 🛒 Implement shopping cart functionality
-- 💳 Add payment integration (Stripe, PayPal)
-- 🔒 Authentication (Sign in / Sign up)
 - 📈 Add analytics (Google Analytics)
 - 📝 Unit & Integration tests (Jest + React Testing Library)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!  
-Feel free to [open an issue](https://github.com/your-username/store/issues) or submit a pull request.
+Feel free to [open an issue](https://github.com/salihbezai/store/issues) or submit a pull request.
 
 ## 📃 License
 
