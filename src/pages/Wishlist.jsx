@@ -11,6 +11,7 @@ import {
   removeFromWishList,
 } from "../features/products/productActions";
 import { Link } from "react-router-dom";
+import { setAddItemToCart } from "../features/cart/cartSlice";
 
 const Wishlist = () => {
   const { favorites, loading } = useSelector((state) => state.products);
@@ -64,6 +65,11 @@ const Wishlist = () => {
   const removeProductFromFavorites = (product) => {
     dispatch(removeFromWishList(product));
   };
+
+  const onAddToCart = (product) => {
+    dispatch(setAddItemToCart(product));
+  };
+
   if (loading) return <LoadingSpinner />;
 
   return (
@@ -117,7 +123,9 @@ const Wishlist = () => {
 
                   <button
                     className="button-theme shadow-gray-400
-                       text-slate-100 bg-color-bg-1 w-full rounded py-1.5 flex items-center justify-center gap-3"
+                       text-slate-100 bg-color-bg-1 w-full rounded 
+                       py-1.5 flex items-center justify-center gap-3"
+                    onClick={() => onAddToCart(product)}
                   >
                     <ShoppingCart className="icon-style text-white" />
                     Add To Cart
@@ -126,7 +134,7 @@ const Wishlist = () => {
                 <div className="w-[250px] py-3">
                   <p
                     className="font-bold text-base
-                       text-black sm:text-sm md:text-base lg:text-base  xl:text-base"
+                       text-black sm:text-sm md:text-base lg:text-base  xl:text-base h-[48px]"
                   >
                     <Link
                       key={product.id}
