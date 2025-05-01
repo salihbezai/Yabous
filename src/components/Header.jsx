@@ -143,33 +143,34 @@ const Header = ({ user }) => {
 
             <MagnifyingGlassIcon className="icon-style text-black absolute right-0 w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
           </div>
-          {user && (
-            <div className="flex items-center gap-2">
-              <div>
-                <Link to="/wishlist" className="relative">
-                  <span
-                    className="secondaryColorBg absolute w-5 h-5 rounded-full 
+
+          <div className="flex items-center gap-2">
+            <div>
+              <Link to="/wishlist" className="relative">
+                <span
+                  className="secondaryColorBg absolute w-5 h-5 rounded-full 
                    flex items-center justify-center text-white right-0 top-[-8px]"
-                  >
-                    {favorites ? favorites.length : 0}
-                  </span>
-                  <HeartIcon
-                    className="icon-style text-black w-8 h-8  
+                >
+                  {favorites ? favorites.length : 0}
+                </span>
+                <HeartIcon
+                  className="icon-style text-black w-8 h-8  
                    sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8 "
-                  />
-                </Link>
-              </div>
-              <div>
-                <Link to="/cart" className="relative">
-                  <span
-                    className="secondaryColorBg absolute w-5 h-5 rounded-full 
+                />
+              </Link>
+            </div>
+            <div>
+              <Link to="/cart" className="relative">
+                <span
+                  className="secondaryColorBg absolute w-5 h-5 rounded-full 
                    flex items-center justify-center text-white right-0 top-[-8px]"
-                  >
-                    {cartItems ? cartItems.length : 0}
-                  </span>
-                  <ShoppingCartIcon className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
-                </Link>
-              </div>
+                >
+                  {cartItems ? cartItems.length : 0}
+                </span>
+                <ShoppingCartIcon className="icon-style text-black w-8 h-8  sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-8 xl:h-8" />
+              </Link>
+            </div>
+            {user && (
               <div>
                 <UserIcon
                   onClick={handleClick}
@@ -248,8 +249,8 @@ const Header = ({ user }) => {
                   </MenuItem>
                 </Menu>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </header>
