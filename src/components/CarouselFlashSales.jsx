@@ -12,6 +12,7 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { setAddItemToCart } from "../features/cart/cartSlice";
+import { Link } from "react-router-dom";
 
 const CarouselFlashSales = () => {
   const { products } = useSelector((state) => state.products);
@@ -64,11 +65,13 @@ const CarouselFlashSales = () => {
               className="relative flex items-center flex-col justify-end w-[250px] h-[250px] shadow-md 
             rounded-md bg-color-bg-3 cursor-pointer "
             >
-              <img
-                src={product.images[0]}
-                alt={product.title}
-                className="w-40 h-40 object-contain hover:scale-120 transition-all  ease-in-out"
-              />
+              <Link key={product.id} className="" to={`/product/${product.id}`}>
+                <img
+                  src={product.images[0]}
+                  alt={product.title}
+                  className="w-40 h-40 object-contain hover:scale-120 transition-all  ease-in-out"
+                />
+              </Link>
               <span className="bg-color-bg-2 text-white px-2 rounded  text-sm absolute top-3 left-1">
                 {product.discountPercent}
               </span>
@@ -95,12 +98,14 @@ const CarouselFlashSales = () => {
               </button>
             </div>
             <div className="w-[250px] py-3">
-              <p
-                className="font-bold text-base
+              <Link key={product.id} className="" to={`/product/${product.id}`}>
+                <p
+                  className="font-bold text-base
                text-black sm:text-sm md:text-base lg:text-base  xl:text-base h-[48px]"
-              >
-                {product.title}
-              </p>
+                >
+                  {product.title}
+                </p>
+              </Link>
               <div className="flex items-center gap-4">
                 <p className="secondaryColorText font-bold">
                   {product.price} $
