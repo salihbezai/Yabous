@@ -68,9 +68,9 @@ const Contact = () => {
                   Fill out our form and we will contact you within 24 hours.
                 </p>
                 <p className="text-gray-800 mt-1">
-                  Emails: customer@exclusive.com
+                  Emails: customer@yabous.com
                 </p>
-                <p className="text-gray-800">Emails: support@exclusive.com</p>
+                <p className="text-gray-800">Emails: support@yabous.com</p>
               </div>
             </div>
           </div>

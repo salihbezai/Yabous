@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const HeroCategories = () => {
-  const targetDate = "2025-05-01T00:00:00";
+  const targetDate = "2025-05-30T00:00:00";
 
   const calculateTimeLeft = () => {
     const difference = +new Date(targetDate) - +new Date();
