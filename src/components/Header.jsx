@@ -73,7 +73,8 @@ const Header = ({ user }) => {
           <div className="mr-3">
             <Link to={"/"}>
               <h1 className="font-extrabold text-xl xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-                <img src="../" />
+                {/* <img src="../" /> */}
+                Federica Loves Salih
               </h1>
             </Link>
           </div>
