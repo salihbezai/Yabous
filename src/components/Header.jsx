@@ -61,6 +61,9 @@ const Header = ({ user }) => {
               <option value="fr" className="text-color-1 cursor-pointer">
                 French
               </option>
+              <option value="fr" className="text-color-1 cursor-pointer">
+                chinese
+              </option>
             </select>
           </div>
         </div>
