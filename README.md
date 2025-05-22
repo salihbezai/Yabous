@@ -2,6 +2,8 @@
 
 A modern e-commerce frontend built with **React 19**, **Vite 6**, **TailwindCSS 4**, and **Redux Toolkit**, using data fetched from the [Platzi Fake Store API](https://fakeapi.platzi.com/en/rest/products/).
 
+website Link : http://yabous-salihbezais-projects.vercel.app/
+
 ## ✨ Features
 
 - ⚡ Built with **Vite** for fast development and optimized production builds
