@@ -24,7 +24,7 @@ const About = () => {
       image: "/images/Emma watson.png",
     },
     {
-      name: "Will Smith",
+      name: "Osmane Reda",
       role: "Product Manager",
       image: "/images/will smith.png",
     },
