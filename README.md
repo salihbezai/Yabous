@@ -99,10 +99,7 @@ Example product object:
 Contributions, issues, and feature requests are welcome!  
 Feel free to [open an issue](https://github.com/salihbezai/store/issues) or submit a pull request.
 
-## 📃 License
 
-This project is licensed under the **MIT License**.  
-See the [LICENSE](LICENSE) file for more details.
 
 ## 📬 Contact
 
